@@ -41,8 +41,8 @@ export default function Navigation() {
   return (
     <nav className='border-b'>
       <div className='container flex h-16 items-center px-4'>
-        <Link href='/' className='font-bold text-xl'>
-          State Manager Tests
+        <Link href='/' className='font-bold text-xl hover:underline flex items-center gap-2'>
+          <span className='text-xs bg-primary/10 px-2 py-1 rounded-md text-primary'>Home</span>
         </Link>
 
         <div className='ml-auto flex items-center space-x-4'>

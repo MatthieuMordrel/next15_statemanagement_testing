@@ -1,4 +1,4 @@
-async function SlowComponent(data: any) {
+function SlowComponent(data: any) {
   return (
     <div className='p-4 bg-blue-100 rounded-lg'>
       <h2 className='text-xl font-semibold'>Slow Component</h2>
