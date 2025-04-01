@@ -50,8 +50,8 @@ export default function VanillaUseEffectPage() {
             {error && <div className='text-red-500'>Error: {error.message}</div>}
             {!loading && !error && (
               <>
-                <SlowComponent />
-                <SlowerComponent />
+                <SlowComponent data={fastData} />
+                <SlowerComponent data={slowData} />
               </>
             )}
           </CardContent>

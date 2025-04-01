@@ -5,9 +5,17 @@ import { Loading } from '@/components/ui/loading'
 import { fetchFastData, fetchSlowData } from '@/lib/data'
 import { Suspense } from 'react'
 
-export default async function VanillaRscAwaitPage() {
-  const fastData = await fetchFastData()
-  const slowData = await fetchSlowData()
+async function FastWrapper() {
+  const data = await fetchFastData()
+  return <SlowComponent data={data} />
+}
+
+async function SlowWrapper() {
+  const data = await fetchSlowData()
+  return <SlowerComponent data={data} />
+}
+
+export default function VanillaRscAwaitPage() {
   return (
     <div className='container py-8'>
       <div className='space-y-6'>
@@ -23,10 +31,10 @@ export default async function VanillaRscAwaitPage() {
           </CardHeader>
           <CardContent className='space-y-4'>
             <Suspense fallback={<Loading />}>
-              <SlowComponent data={fastData} />
+              <FastWrapper />
             </Suspense>
             <Suspense fallback={<Loading />}>
-              <SlowerComponent data={slowData} />
+              <SlowWrapper />
             </Suspense>
           </CardContent>
         </Card>
