@@ -1,10 +1,8 @@
-'use client'
-
-import { ConsumePromiseComponent } from '@/components/ConsumePromiseComponent'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Loading } from '@/components/ui/loading'
 import { fetchFastData, fetchSlowData } from '@/lib/data'
 import { Suspense } from 'react'
+import { DataDisplay, SlowerDataDisplay } from './useWrappers'
 
 export default function VanillaPromisePropsPage() {
   const fastPromise = fetchFastData()
@@ -15,7 +13,7 @@ export default function VanillaPromisePropsPage() {
       <div className='space-y-6'>
         <div>
           <h1 className='text-2xl font-bold mb-2'>Vanilla React - Promise Props Approach</h1>
-          <p className='text-muted-foreground'>Using the use hook with promise props for streaming. Each component handles its own promise.</p>
+          <p className='text-muted-foreground'>Using the use hook with promise props for streaming. Each component streams independently.</p>
         </div>
 
         <Card>
@@ -25,10 +23,10 @@ export default function VanillaPromisePropsPage() {
           </CardHeader>
           <CardContent className='space-y-4'>
             <Suspense fallback={<Loading />}>
-              <ConsumePromiseComponent promise={fastPromise} />
+              <DataDisplay promise={fastPromise} />
             </Suspense>
             <Suspense fallback={<Loading />}>
-              <ConsumePromiseComponent promise={slowPromise} />
+              <SlowerDataDisplay promise={slowPromise} />
             </Suspense>
           </CardContent>
         </Card>

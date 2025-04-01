@@ -6,11 +6,13 @@ import { fetchFastData, fetchSlowData } from '@/lib/data'
 import { Suspense } from 'react'
 
 async function FastWrapper() {
+  // The await here allows the component to suspend
   const data = await fetchFastData()
   return <SlowComponent data={data} />
 }
 
 async function SlowWrapper() {
+  // The await here allows the component to suspend
   const data = await fetchSlowData()
   return <SlowerComponent data={data} />
 }
