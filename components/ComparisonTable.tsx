@@ -22,8 +22,8 @@ const stateManagers = [
       },
       {
         name: 'Promise props with use hook',
-        pros: ['Clean data flow', 'Good for streaming', 'Type-safe', 'Works well with RSC'],
-        cons: ['Requires careful error handling', 'May need additional state management', 'Less flexible than other approaches']
+        pros: ['Simple mental model'],
+        cons: ['Requires using context for DI = boilerplate/provider hell', 'No caching']
       }
     ]
   },

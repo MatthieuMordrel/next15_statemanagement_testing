@@ -74,7 +74,12 @@ const techniques = [
       'No need to wrap client components in RSC, use() can be used on client',
       'Directly suspend the client component, not the RSC'
     ],
-    cons: ['Client components need to accept a promise as props', 'Hydration always has to be considered', 'Poor documentation']
+    cons: [
+      'CC need to accept a promise as props or hoisting the promise in a parent RSC',
+      'Requires using context for dependency injection = boilerplate/provider hell',
+      'Hydration always has to be considered',
+      'Poor documentation'
+    ]
   }
 ]
 
