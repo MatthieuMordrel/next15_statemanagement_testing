@@ -23,7 +23,7 @@ const stateManagers = [
       {
         name: 'Promise props with use hook',
         pros: ['Simple mental model'],
-        cons: ['Requires using context for DI = boilerplate/provider hell', 'No caching']
+        cons: ['Requires using context for DI = boilerplate/provider hell', 'No caching on the client side']
       }
     ]
   },

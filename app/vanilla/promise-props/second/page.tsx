@@ -3,27 +3,27 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Loading } from '@/components/ui/loading'
 import Link from 'next/link'
 import { Suspense } from 'react'
-import { WrapperSlowComponent_Use, WrapperSlowerComponent_Use } from './Wrappers'
+import { WrapperSlowComponent_Use, WrapperSlowerComponent_Use } from '../Wrappers'
 
-export default function VanillaPromisePropsPage() {
+export default function SecondPage() {
   return (
     <div className='container py-8'>
       <div className='space-y-6'>
         <div>
-          <h1 className='text-2xl font-bold mb-2'>Vanilla React - Promise Props Approach</h1>
-          <p className='text-muted-foreground'>Using the use hook with promise props for streaming. Each component streams independently.</p>
+          <h1 className='text-2xl font-bold mb-2'>Second Page - Same Data Context</h1>
+          <p className='text-muted-foreground'>This page uses the same data context from the layout.</p>
         </div>
 
         <div>
           <Button asChild variant='outline'>
-            <Link href='/vanilla/promise-props/second'>Go to Second Page</Link>
+            <Link href='/vanilla/promise-props'>Back to First Page</Link>
           </Button>
         </div>
 
         <Card>
           <CardHeader>
-            <CardTitle>Streaming Example</CardTitle>
-            <CardDescription>Using the use hook with promise props for independent streaming</CardDescription>
+            <CardTitle>Streaming Example - Shared Data</CardTitle>
+            <CardDescription>Using the same data context from the layout level</CardDescription>
           </CardHeader>
           <CardContent className='space-y-4'>
             <Suspense fallback={<Loading />}>
