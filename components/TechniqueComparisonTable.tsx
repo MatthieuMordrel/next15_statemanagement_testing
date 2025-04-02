@@ -4,19 +4,22 @@ const techniques = [
   {
     name: 'useEffect-based data fetching',
     dataFetching: {
-      description: 'Data fetching starts on the client side after component mount',
-      details: 'Triggered by useEffect hook, runs after initial render, client-side only execution'
+      start: 'Data fetching starts on the client side after component mount',
+      details: 'Triggered by useEffect hook, runs after initial render, client calls the API, which calls the database'
     },
 
     pros: [
       'Works with any state management solution',
       'Declarative approach',
       'If data is available show it, otherwise show loading state or error',
-      'Easy to implement and extensive docs',
-      'No hydration issues because servers renders the loading state'
+      'Components can just consume a custom hook, no props needed',
+      'No hydration issues because servers renders the loading state',
+      'Data Fetching and Caching happen on the client',
+      'Easy to implement and extensive docs'
     ],
     cons: [
       'Data fetching starts on the client',
+      'Need to pass by the server to get the data',
       'Risk of waterfalls with round-trips',
       'User must be identified on each request',
       'No SEO benefits',
@@ -26,32 +29,31 @@ const techniques = [
   {
     name: 'RSC await with client components',
     dataFetching: {
-      description: 'Data fetching happens on the server',
-      details: 'Server-side execution, automatic streaming support, built into React Server Components, can be mixed with client components'
+      start: 'Data fetching starts on the server',
+      details: 'Triggered after the first request, only blocks the rendering of the data-reliant components until the data is fetched'
     },
 
     pros: [
-      'Server-side data fetching',
-      'Better performance',
-      'Automatic streaming',
-      'Built-in error boundaries',
-      'Reduced client-side JavaScript',
-      'Better SEO support',
-      'Automatic code splitting'
+      'SEO benefits thanks to incremental html generation',
+      'Database can be called directly, no need for additional endpoints',
+      'No rerender after mounting',
+      'All independant data fetches can start in parallel',
+      'Integrate well with Suspense to show instant loading state',
+      'Integrate with Error Boundaries for better error handling'
     ],
     cons: [
-      'More complex setup',
-      'Requires careful component splitting',
-      'May need additional client-side state management',
-      'Learning curve for RSC patterns',
-      'May need to refactor existing components',
-      'Debugging can be more challenging'
+      'Much less declarative approach (Suspense and Error Boundaries)',
+      'Need to pass props around to get the data',
+      'Caching is difficult to manage, esp. on navigation',
+      "Server doesn't know what is cached on client",
+      'Extremely hard to integrate with state management systems',
+      'Poor documentation'
     ]
   },
   {
     name: 'Promise props with use hook',
     dataFetching: {
-      description: 'Data fetching is handled through promise props and the use hook',
+      start: 'Data fetching starts',
       details: 'Modern React pattern, works with both client and server, simpler mental model, built-in error handling'
     },
 
@@ -97,7 +99,7 @@ export function TechniqueComparisonTable() {
               </TableCell>
               <TableCell className='whitespace-normal'>
                 <div className='space-y-2'>
-                  <div className='text-sm text-muted-foreground'>{technique.dataFetching.description}</div>
+                  <div className='text-sm text-muted-foreground'>{technique.dataFetching.start}</div>
                   <div className='text-sm'>{technique.dataFetching.details}</div>
                 </div>
               </TableCell>

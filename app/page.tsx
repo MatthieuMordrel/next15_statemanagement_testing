@@ -7,8 +7,8 @@ export default function Home() {
     <div className='min-h-screen bg-background'>
       <div className='container mx-auto space-y-8 py-8'>
         <div className='space-y-2'>
-          <h1 className='text-4xl font-bold tracking-tight'>State Management Testing Suite</h1>
-          <p className='text-muted-foreground'>Compare different state management solutions in Next.js 14</p>
+          <h1 className='text-4xl font-bold tracking-tight'>State Management Testing Suite in an SSR context</h1>
+          <p className='text-muted-foreground'>Compare different state management solutions in Next.js 15</p>
         </div>
 
         <OverviewCard />

@@ -6,7 +6,7 @@ export function OverviewCard() {
       <CardHeader>
         <CardTitle>What We're Testing</CardTitle>
         <CardDescription>
-          This project compares different state management solutions in Next.js 14, testing various approaches to data fetching and state management.
+          This project compares different state management solutions in Next.js 15, testing various approaches to data fetching and state management.
         </CardDescription>
       </CardHeader>
       <CardContent className='space-y-6'>
