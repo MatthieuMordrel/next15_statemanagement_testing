@@ -9,7 +9,7 @@ export async function fetchData(delay: number = 1000) {
 }
 
 // Simulated API calls that return our slow components
-export async function fetchFastData() {
+export async function fetchSlowData() {
   await new Promise(resolve => setTimeout(resolve, 2000))
   return {
     id: 'fast',
@@ -18,7 +18,7 @@ export async function fetchFastData() {
   }
 }
 
-export async function fetchSlowData() {
+export async function fetchSlowerData() {
   await new Promise(resolve => setTimeout(resolve, 4000))
   return {
     id: 'slow',

@@ -1,12 +1,12 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Loading } from '@/components/ui/loading'
-import { fetchFastData, fetchSlowData } from '@/lib/data'
+import { fetchSlowData, fetchSlowerData } from '@/lib/data'
 import { Suspense } from 'react'
 import { DataDisplay, SlowerDataDisplay } from './useWrappers'
 
 export default function VanillaPromisePropsPage() {
-  const fastPromise = fetchFastData()
   const slowPromise = fetchSlowData()
+  const slowerPromise = fetchSlowerData()
 
   return (
     <div className='container py-8'>
@@ -23,10 +23,10 @@ export default function VanillaPromisePropsPage() {
           </CardHeader>
           <CardContent className='space-y-4'>
             <Suspense fallback={<Loading />}>
-              <DataDisplay promise={fastPromise} />
+              <DataDisplay promise={slowPromise} />
             </Suspense>
             <Suspense fallback={<Loading />}>
-              <SlowerDataDisplay promise={slowPromise} />
+              <SlowerDataDisplay promise={slowerPromise} />
             </Suspense>
           </CardContent>
         </Card>

@@ -2,18 +2,18 @@ import SlowComponent from '@/components/SlowComponent'
 import SlowerComponent from '@/components/SlowerComponent'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Loading } from '@/components/ui/loading'
-import { fetchFastData, fetchSlowData } from '@/lib/data'
+import { fetchSlowData, fetchSlowerData } from '@/lib/data'
 import { Suspense } from 'react'
-
-async function FastWrapper() {
-  // The await here allows the component to suspend
-  const data = await fetchFastData()
-  return <SlowComponent data={data} />
-}
 
 async function SlowWrapper() {
   // The await here allows the component to suspend
   const data = await fetchSlowData()
+  return <SlowComponent data={data} />
+}
+
+async function SlowerWrapper() {
+  // The await here allows the component to suspend
+  const data = await fetchSlowerData()
   return <SlowerComponent data={data} />
 }
 
@@ -33,10 +33,10 @@ export default function VanillaRscAwaitPage() {
           </CardHeader>
           <CardContent className='space-y-4'>
             <Suspense fallback={<Loading />}>
-              <FastWrapper />
+              <SlowWrapper />
             </Suspense>
             <Suspense fallback={<Loading />}>
-              <SlowWrapper />
+              <SlowerWrapper />
             </Suspense>
           </CardContent>
         </Card>

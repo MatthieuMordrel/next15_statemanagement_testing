@@ -5,24 +5,24 @@ import { useEffect, useState } from 'react'
 
 function SlowerComponent({ data }: { data: any }) {
   console.log('SlowerComponent streaming with data:', data.timestamp)
-  const [timestamp, setTimestamp] = useState(data.timestamp)
+  const [state, setState] = useState(data)
 
   useEffect(() => {
-    console.log('SlowerComponent hydrated with timestamp:', timestamp)
+    console.log('SlowerComponent hydrated with timestamp:', state.timestamp)
   }, [])
 
   const incrementYear = () => {
-    const date = new Date(timestamp)
+    const date = new Date(state.timestamp)
     date.setFullYear(date.getFullYear() + 1)
-    setTimestamp(date.toISOString())
+    setState({ ...state, timestamp: date.toISOString() })
   }
 
   return (
     <div className='p-4 bg-green-100 rounded-lg'>
       <h2 className='text-xl font-semibold'>Slower Component</h2>
       <p>This component took 4 seconds to load!</p>
-      <p>Loaded data: {data.title}</p>
-      <p>Timestamp: {timestamp}</p>
+      <p>Loaded data: {state.title}</p>
+      <p>Timestamp: {state.timestamp}</p>
       <Button onClick={incrementYear} className='mt-2'>
         Increment Year
       </Button>
