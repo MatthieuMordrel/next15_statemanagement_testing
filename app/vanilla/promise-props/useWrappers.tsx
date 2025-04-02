@@ -1,7 +1,7 @@
 'use client'
 
-import SlowComponent from '@/components/SlowComponent'
-import SlowerComponent from '@/components/SlowerComponent'
+import SlowComponent from '@/components/data components/SlowComponent'
+import SlowerComponent from '@/components/data components/SlowerComponent'
 import { Data } from '@/lib/data'
 import { use } from 'react'
 

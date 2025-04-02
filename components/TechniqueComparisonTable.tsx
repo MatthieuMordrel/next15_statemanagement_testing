@@ -2,7 +2,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 
 const techniques = [
   {
-    name: 'useEffect-based data fetching',
+    name: 'useEffect-based data fetching (no Suspense/Streaming)',
     dataFetching: {
       start: 'Data fetching starts on the client side after component mount',
       details: 'Triggered by useEffect hook, runs after initial render, client calls the API, which calls the database'
@@ -12,7 +12,7 @@ const techniques = [
       'Works with any state management solution',
       'Declarative approach',
       'If data is available show it, otherwise show loading state or error',
-      'Components can just consume a custom hook, no props needed',
+      'Components are self-contained, no props needed',
       'No hydration issues because servers renders the loading state',
       'Data Fetching and Caching happen on the client',
       'Easy to implement and extensive docs'
@@ -39,7 +39,8 @@ const techniques = [
       'No rerender after mounting',
       'All independant data fetches can start in parallel',
       'Integrate well with Suspense to show instant loading state',
-      'Integrate with Error Boundaries for better error handling'
+      'Integrate with Error Boundaries for better error handling',
+      'Theoretical better TTI thanks to selective hydration'
     ],
     cons: [
       'Much less declarative approach (Suspense and Error Boundaries)',
@@ -60,7 +61,7 @@ const techniques = [
     },
 
     pros: ['Clean data flow'],
-    cons: ['Promise must be passed around through props', 'Hydration always has to be considered', 'Poor documentation']
+    cons: ['Promises must be passed around through props', 'Hydration always has to be considered', 'Poor documentation']
   }
 ]
 

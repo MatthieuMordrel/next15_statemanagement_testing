@@ -1,5 +1,5 @@
-import SlowComponent from '@/components/SlowComponent'
-import SlowerComponent from '@/components/SlowerComponent'
+import SlowComponent from '@/components/data components/SlowComponent'
+import SlowerComponent from '@/components/data components/SlowerComponent'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Loading } from '@/components/ui/loading'
 import { fetchSlowData, fetchSlowerData } from '@/lib/data'
