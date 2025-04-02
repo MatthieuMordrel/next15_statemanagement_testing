@@ -1,15 +1,16 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { Data } from '@/lib/data'
 import { useEffect, useState } from 'react'
 
-function SlowComponent({ data }: { data: any }) {
+function SlowComponent({ data }: { data: Data }) {
   console.log('SlowComponent streaming with data:', data.timestamp)
   const [state, setState] = useState(data)
 
   useEffect(() => {
     console.log('SlowComponent hydrated with timestamp:', state.timestamp)
-  }, [])
+  }, [state.timestamp])
 
   const incrementYear = () => {
     const date = new Date(state.timestamp)

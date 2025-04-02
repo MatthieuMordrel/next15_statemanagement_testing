@@ -3,10 +3,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 export function OverviewCard() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>What We're Testing</CardTitle>
+      <CardHeader className='space-y-2'>
+        <CardTitle>What we are testing</CardTitle>
         <CardDescription>
           This project compares different state management solutions in Next.js 15, testing various approaches to data fetching and state management.
+        </CardDescription>
+        <CardTitle>What we are not testing</CardTitle>
+        <CardDescription>
+          We are NOT comparing SSR vs CSR. I truly think that SSG and PPR are great technologies and have little to no downsides.
+          <br />
+          We are solely focusing on the pros and cons of the different strategies that can be adopted for data fetching and state management in an SSR
+          context.
+          <br />
         </CardDescription>
       </CardHeader>
       <CardContent className='space-y-6'>

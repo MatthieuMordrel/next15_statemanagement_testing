@@ -4,12 +4,12 @@ import SlowComponent from '@/components/SlowComponent'
 import SlowerComponent from '@/components/SlowerComponent'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Loading } from '@/components/ui/loading'
-import { fetchSlowData, fetchSlowerData } from '@/lib/data'
+import { Data, fetchSlowData, fetchSlowerData } from '@/lib/data'
 import { useEffect, useState } from 'react'
 
 export default function VanillaUseEffectPage() {
-  const [slowData, setSlowData] = useState<any>(null)
-  const [slowerData, setSlowerData] = useState<any>(null)
+  const [slowData, setSlowData] = useState<Data | null>(null)
+  const [slowerData, setSlowerData] = useState<Data | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)
 
@@ -50,8 +50,8 @@ export default function VanillaUseEffectPage() {
             {error && <div className='text-red-500'>Error: {error.message}</div>}
             {!loading && !error && (
               <>
-                <SlowComponent data={slowData} />
-                <SlowerComponent data={slowerData} />
+                {slowData && <SlowComponent data={slowData} />}
+                {slowerData && <SlowerComponent data={slowerData} />}
               </>
             )}
           </CardContent>

@@ -46,7 +46,9 @@ const techniques = [
       'Need to pass props around to get the data',
       'Caching is difficult to manage, esp. on navigation',
       "Server doesn't know what is cached on client",
-      'Extremely hard to integrate with state management systems',
+      'Extremely hard to integrate (properly) with state management systems',
+      'Hydration always has to be considered',
+      'Dynamic non-fetch must be explicitely specified',
       'Poor documentation'
     ]
   },
@@ -57,23 +59,8 @@ const techniques = [
       details: 'Modern React pattern, works with both client and server, simpler mental model, built-in error handling'
     },
 
-    pros: [
-      'Clean data flow',
-      'Good for streaming',
-      'Type-safe',
-      'Works well with RSC',
-      'Reduces boilerplate',
-      'Better error handling',
-      'Simpler mental model'
-    ],
-    cons: [
-      'Requires careful error handling',
-      'May need additional state management',
-      'Less flexible than other approaches',
-      'Newer API, less community support',
-      'May need polyfills for older browsers',
-      'Limited browser support'
-    ]
+    pros: ['Clean data flow'],
+    cons: ['Promise must be passed around through props', 'Hydration always has to be considered', 'Poor documentation']
   }
 ]
 

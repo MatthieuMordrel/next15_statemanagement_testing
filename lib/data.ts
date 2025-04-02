@@ -1,5 +1,11 @@
+export type Data = {
+  id: string
+  title: string
+  timestamp: string
+}
+
 // Simulated data fetching with delay
-export async function fetchData(delay: number = 1000) {
+export async function fetchData(delay: number = 1000): Promise<Data> {
   await new Promise(resolve => setTimeout(resolve, delay))
   return {
     id: Math.random().toString(36).substring(7),
@@ -9,7 +15,7 @@ export async function fetchData(delay: number = 1000) {
 }
 
 // Simulated API calls that return our slow components
-export async function fetchSlowData() {
+export async function fetchSlowData(): Promise<Data> {
   await new Promise(resolve => setTimeout(resolve, 2000))
   return {
     id: 'fast',
@@ -18,7 +24,7 @@ export async function fetchSlowData() {
   }
 }
 
-export async function fetchSlowerData() {
+export async function fetchSlowerData(): Promise<Data> {
   await new Promise(resolve => setTimeout(resolve, 4000))
   return {
     id: 'slow',
@@ -28,7 +34,7 @@ export async function fetchSlowerData() {
 }
 
 // Simulated error data fetching
-export async function fetchErrorData() {
+export async function fetchErrorData(): Promise<Data> {
   await new Promise(resolve => setTimeout(resolve, 1000))
   throw new Error('Failed to fetch data')
 }
