@@ -29,8 +29,8 @@ const techniques = [
   {
     name: 'RSC await with client components',
     dataFetching: {
-      start: 'Data fetching starts on the server',
-      details: 'Triggered after the first request, only blocks the rendering of the data-reliant components until the data is fetched'
+      start: 'Data fetching in a parent wrapper RSC',
+      details: 'Triggered after the http request, blocks the rendering of the RSCs until their data is fetched'
     },
 
     pros: [
@@ -43,25 +43,38 @@ const techniques = [
       'Theoretical better TTI thanks to selective hydration'
     ],
     cons: [
-      'Much less declarative approach (Suspense and Error Boundaries)',
+      'Less declarative approach (Suspense and Error Boundaries)',
       'Need to pass props around to get the data',
+      'Or use a provider that need to be initalized with each query',
+      //Because the server doesn't know what is cached on the client, it will always try to fetch the data again and hydrate the cache/client state
+      //This is very different from CSR/SPA where the server is only called when needed based on client needs
       'Caching is difficult to manage, esp. on navigation',
       "Server doesn't know what is cached on client",
       'Extremely hard to integrate (properly) with state management systems',
       'Hydration always has to be considered',
-      'Dynamic non-fetch must be explicitely specified',
+      //Only fetch opt out of the SSG, for the others we need to use connection or force-dynamic as route config
+      //With "use cache" this is probably simpler
+      'Non-fetch must be explicitely specified to avoid SSG',
+      //If we don't wrap the client component in an RSC, we cannot sync the server state on the server and use hooks
+      'Client Components must be wrapped in an RSC itself wrapped in a Suspense',
+      // If we do multiple fetch calls in the same RSC, the suspense boundary only resolve when the last fetch call is resolved
+      'Each wrapper RSC must be unique to the fetching they are doing optimally',
       'Poor documentation'
     ]
   },
   {
     name: 'Promise props with use hook',
     dataFetching: {
-      start: 'Data fetching starts',
-      details: 'Modern React pattern, works with both client and server, simpler mental model, built-in error handling'
+      start: 'Data fetching starts in any parent RSC',
+      details: 'Triggered after the http request, blocks the rendering of the client components fetching data'
     },
 
-    pros: ['Clean data flow'],
-    cons: ['Promises must be passed around through props', 'Hydration always has to be considered', 'Poor documentation']
+    pros: [
+      'Same benefits as with RSC',
+      'No need to wrap client components in RSC, use() can be used on client',
+      'Directly suspend the client component, not the RSC'
+    ],
+    cons: ['Client components need to accept a promise as props', 'Hydration always has to be considered', 'Poor documentation']
   }
 ]
 

@@ -1,20 +1,19 @@
-import SlowComponent from '@/components/data components/SlowComponent'
-import SlowerComponent from '@/components/data components/SlowerComponent'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Loading } from '@/components/ui/loading'
 import { fetchSlowData, fetchSlowerData } from '@/lib/data'
 import { Suspense } from 'react'
+import { WrapperSlowComponent_RSC, WrapperSlowerComponent_RSC } from '../Wrappers'
 
 async function SlowWrapper() {
   // The await here allows the component to suspend
   const data = await fetchSlowData()
-  return <SlowComponent data={data} />
+  return <WrapperSlowComponent_RSC data={data} />
 }
 
 async function SlowerWrapper() {
   // The await here allows the component to suspend
   const data = await fetchSlowerData()
-  return <SlowerComponent data={data} />
+  return <WrapperSlowerComponent_RSC data={data} />
 }
 
 export default function VanillaRscAwaitPage() {
