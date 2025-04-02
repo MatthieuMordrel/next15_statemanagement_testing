@@ -10,7 +10,8 @@ export function OverviewCard() {
         </CardDescription>
         <CardTitle>What we are not testing</CardTitle>
         <CardDescription>
-          We are NOT comparing SSR vs CSR. I truly think that SSG and PPR are great technologies and have little to no downsides.
+          We are NOT comparing SSR vs CSR. I truly think that SSG and PPR are great technologies and have little downsides (self hosting being one of
+          them).
           <br />
           We are solely focusing on the pros and cons of the different strategies that can be adopted for data fetching and state management in an SSR
           context.
