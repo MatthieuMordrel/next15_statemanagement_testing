@@ -76,7 +76,6 @@ const techniques = [
     ],
     cons: [
       'CC need to accept a promise as props or hoisting the promise in a parent RSC',
-      'Requires using context for dependency injection = boilerplate/provider hell',
       'Hydration always has to be considered',
       'Poor documentation'
     ]
