@@ -1,9 +1,12 @@
 'use client'
 
+import { useAtom } from 'jotai'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+import { PrefetchToggle } from '@/components/prefetch-toggle'
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu'
+import { prefetchAtom } from '@/lib/atoms/prefetch'
 import { cn } from '@/lib/utils'
 
 // State management options
@@ -24,6 +27,7 @@ const approaches = [
 
 export default function Navigation() {
   const pathname = usePathname()
+  const [prefetchEnabled] = useAtom(prefetchAtom)
 
   return (
     <nav className='border-b'>
@@ -32,7 +36,8 @@ export default function Navigation() {
           <span className='text-xs bg-primary/10 px-2 py-1 rounded-md text-primary'>Home</span>
         </Link>
 
-        <div className='ml-auto flex items-center'>
+        <div className='ml-auto flex items-center gap-4'>
+          <PrefetchToggle />
           <NavigationMenu>
             <NavigationMenuList className='gap-1'>
               {stateManagers.map(manager => (
@@ -48,6 +53,7 @@ export default function Navigation() {
                           <Link
                             key={approach.slug}
                             href={`/${manager.slug}/${approach.slug}`}
+                            prefetch={prefetchEnabled}
                             className={cn(
                               'flex flex-col items-start justify-between rounded-md p-4 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground border transition-colors duration-200',
                               pathname === `/${manager.slug}/${approach.slug}`
