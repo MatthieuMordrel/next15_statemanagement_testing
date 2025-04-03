@@ -1,24 +1,14 @@
 'use client'
 
-import { WrapperSlowComponent, WrapperSlowerComponent } from '@/app/vanilla/Wrappers'
-import { Loading } from '@/components/ui/loading'
+import DataComponent from '@/components/data components/DataComponent'
 import { useSlowDataPromiseProps, useSlowerDataPromiseProps } from '@/hooks/useSlowData'
-import { Suspense } from 'react'
 
 export function WrapperSlowComponent_RQ_PromiseProps_Client() {
-  const { data } = useSlowDataPromiseProps()
-  return (
-    <Suspense fallback={<Loading />}>
-      <WrapperSlowComponent data={data} />
-    </Suspense>
-  )
+  const { data, incrementYear } = useSlowDataPromiseProps()
+  return <DataComponent data={data} seconds={1} color='blue' incrementYear={incrementYear} />
 }
 
 export function WrapperSlowerComponent_RQ_PromiseProps_Client() {
-  const { data } = useSlowerDataPromiseProps()
-  return (
-    <Suspense fallback={<Loading />}>
-      <WrapperSlowerComponent data={data} />
-    </Suspense>
-  )
+  const { data, incrementYear } = useSlowerDataPromiseProps()
+  return <DataComponent data={data} seconds={1} color='green' incrementYear={incrementYear} />
 }

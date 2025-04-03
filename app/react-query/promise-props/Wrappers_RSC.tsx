@@ -1,9 +1,12 @@
+import { Loading } from '@/components/ui/loading'
 import { fetchSlowData, fetchSlowerData } from '@/lib/data'
-import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query'
-import { WrapperSlowComponent_RQ_RSC_Client, WrapperSlowerComponent_RQ_RSC_Client } from '../rsc-await/Wrappers_Client'
+import { getQueryClient } from '@/lib/getQueryClient'
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
+import { Suspense } from 'react'
+import { WrapperSlowComponent_RQ_PromiseProps_Client, WrapperSlowerComponent_RQ_PromiseProps_Client } from './Wrappers_Client'
 
 export async function WrapperSlowComponent_PromiseProps_RSC_Server() {
-  const queryClient = new QueryClient()
+  const queryClient = getQueryClient()
 
   queryClient.prefetchQuery({
     queryKey: ['slowDataPromiseProps'],
@@ -12,13 +15,15 @@ export async function WrapperSlowComponent_PromiseProps_RSC_Server() {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <WrapperSlowComponent_RQ_RSC_Client />
+      <Suspense fallback={<Loading />}>
+        <WrapperSlowComponent_RQ_PromiseProps_Client />
+      </Suspense>
     </HydrationBoundary>
   )
 }
 
 export async function WrapperSlowerComponent_PromiseProps_RSC_Server() {
-  const queryClient = new QueryClient()
+  const queryClient = getQueryClient()
 
   queryClient.prefetchQuery({
     queryKey: ['slowerDataPromiseProps'],
@@ -26,7 +31,9 @@ export async function WrapperSlowerComponent_PromiseProps_RSC_Server() {
   })
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <WrapperSlowerComponent_RQ_RSC_Client />
+      <Suspense fallback={<Loading />}>
+        <WrapperSlowerComponent_RQ_PromiseProps_Client />
+      </Suspense>
     </HydrationBoundary>
   )
 }

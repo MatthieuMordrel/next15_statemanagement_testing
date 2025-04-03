@@ -1,14 +1,14 @@
 'use client'
 
-import { WrapperSlowComponent, WrapperSlowerComponent } from '@/app/vanilla/Wrappers'
+import DataComponent from '@/components/data components/DataComponent'
 import { Loading } from '@/components/ui/loading'
 import { useSlowDataRSC, useSlowerDataRSC } from '@/hooks/useSlowData'
 
 export function WrapperSlowComponent_RQ_RSC_Client() {
-  const { data, isLoading, isError, error } = useSlowDataRSC()
+  const { data, isLoading, isError, error, incrementYear } = useSlowDataRSC()
   return (
     <>
-      {data && <WrapperSlowComponent data={data} />}
+      {data && <DataComponent data={data} seconds={1} color='blue' incrementYear={incrementYear} />}
       {isLoading && <Loading />}
       {isError && <div className='text-red-500'>Error loading slow data: {error?.message}</div>}
     </>
@@ -16,10 +16,10 @@ export function WrapperSlowComponent_RQ_RSC_Client() {
 }
 
 export function WrapperSlowerComponent_RQ_RSC_Client() {
-  const { data, isLoading, isError, error } = useSlowerDataRSC()
+  const { data, isLoading, isError, error, incrementYear } = useSlowerDataRSC()
   return (
     <>
-      {data && <WrapperSlowerComponent data={data} />}
+      {data && <DataComponent data={data} seconds={1} color='green' incrementYear={incrementYear} />}
       {isLoading && <Loading />}
       {isError && <div className='text-red-500'>Error loading slower data: {error?.message}</div>}
     </>

@@ -5,8 +5,7 @@ export type Data = {
 }
 
 // Simulated data fetching with delay
-export async function fetchData(delay: number = 1000): Promise<Data> {
-  await new Promise(resolve => setTimeout(resolve, delay))
+export function fetchDataOptimistic(delay: number = 1000): Data {
   return {
     id: Math.random().toString(36).substring(7),
     title: `Data fetched after ${delay}ms`,

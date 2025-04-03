@@ -1,60 +1,125 @@
-import { fetchSlowData, fetchSlowerData } from '@/lib/data'
-import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
+import { Data, fetchSlowData, fetchSlowerData } from '@/lib/data'
+import { useMutation, useQuery, useQueryClient, useSuspenseQuery } from '@tanstack/react-query'
 
-/**
- * Custom hook for fetching slow data (2s delay)
- * @returns React Query result for slow data
- */
+// Reusable incrementYear mutation factory
+function createIncrementYearMutation(queryKey: string, fetchFn: () => Promise<any>) {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationKey: [`incrementYear-${queryKey}`],
+    onMutate: async () => {
+      await queryClient.cancelQueries({ queryKey: [queryKey] })
+      const data = queryClient.getQueryData([queryKey]) as Data
+      queryClient.setQueryData([queryKey], {
+        ...data,
+        timestamp: (new Date(data.timestamp).getFullYear() + 1).toString()
+      })
+      return data
+    },
+    mutationFn: async () => {
+      const data = await fetchFn()
+      return {
+        ...data,
+        timestamp: (new Date().getFullYear() + 1).toString()
+      }
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: [queryKey] })
+    }
+  })
+}
+
 export function useSlowData() {
-  return useQuery({
+  const query = useQuery({
     queryKey: ['slowData'],
     queryFn: fetchSlowData
   })
+  const incrementYear = createIncrementYearMutation('slowData', fetchSlowData)
+
+  return {
+    data: query.data,
+    isLoading: query.isLoading,
+    isError: query.isError,
+    error: query.error,
+    incrementYear: incrementYear.mutate
+  }
 }
 
-/**
- * Custom hook for fetching slower data (4s delay)
- * @returns React Query result for slower data
- */
 export function useSlowerData() {
-  return useQuery({
+  const query = useQuery({
     queryKey: ['slowerData'],
     queryFn: fetchSlowerData
   })
+  const incrementYear = createIncrementYearMutation('slowerData', fetchSlowerData)
+
+  return {
+    data: query.data,
+    isLoading: query.isLoading,
+    isError: query.isError,
+    error: query.error,
+    incrementYear: incrementYear.mutate
+  }
 }
 
 export function useSlowDataRSC() {
-  return useSuspenseQuery({
+  const query = useSuspenseQuery({
     queryKey: ['slowDataRSC'],
     queryFn: fetchSlowData
   })
+  const incrementYear = createIncrementYearMutation('slowDataRSC', fetchSlowData)
+
+  return {
+    data: query.data,
+    isLoading: query.isLoading,
+    isError: query.isError,
+    error: query.error,
+    incrementYear: incrementYear.mutate
+  }
 }
 
 export function useSlowerDataRSC() {
-  return useSuspenseQuery({
+  const query = useSuspenseQuery({
     queryKey: ['slowerDataRSC'],
     queryFn: fetchSlowerData
   })
+  const incrementYear = createIncrementYearMutation('slowerDataRSC', fetchSlowerData)
+
+  return {
+    data: query.data,
+    isLoading: query.isLoading,
+    isError: query.isError,
+    error: query.error,
+    incrementYear: incrementYear.mutate
+  }
 }
 
-/**
- * Custom hook for fetching slow data (2s delay) using Promise Props
- * @returns React Query result for slow data
- */
 export function useSlowDataPromiseProps() {
-  return useSuspenseQuery({
+  const query = useSuspenseQuery({
     queryKey: ['slowDataPromiseProps'],
     queryFn: fetchSlowData
   })
+  const incrementYear = createIncrementYearMutation('slowDataPromiseProps', fetchSlowData)
+
+  return {
+    data: query.data,
+    isLoading: query.isLoading,
+    isError: query.isError,
+    error: query.error,
+    incrementYear: incrementYear.mutate
+  }
 }
 
-/**
- * Custom hook for fetching slower data (4s delay) using Promise Props
- * @returns React Query result for slower data
- */
 export function useSlowerDataPromiseProps() {
-  return useSuspenseQuery({
+  const query = useSuspenseQuery({
     queryKey: ['slowerDataPromiseProps'],
     queryFn: fetchSlowerData
   })
+  const incrementYear = createIncrementYearMutation('slowerDataPromiseProps', fetchSlowerData)
+
+  return {
+    data: query.data,
+    isLoading: query.isLoading,
+    isError: query.isError,
+    error: query.error,
+    incrementYear: incrementYear.mutate
+  }
 }
