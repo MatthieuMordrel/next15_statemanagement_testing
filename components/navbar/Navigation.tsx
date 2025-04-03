@@ -1,11 +1,12 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useRef, useState } from 'react'
 
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu'
+import { cn } from '@/lib/utils'
+
+// State management options
 const stateManagers = [
   { name: 'Vanilla', slug: 'vanilla' },
   { name: 'Jotai', slug: 'jotai' },
@@ -14,6 +15,7 @@ const stateManagers = [
   { name: 'SWR', slug: 'swr' }
 ]
 
+// Data fetching approaches
 const approaches = [
   { name: 'useEffect', slug: 'use-effect' },
   { name: 'RSC Await', slug: 'rsc-await' },
@@ -22,21 +24,6 @@ const approaches = [
 
 export default function Navigation() {
   const pathname = usePathname()
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
-
-  const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => {
-      setOpenDropdown(null)
-    }, 200)
-  }
-
-  const handleMouseEnter = (slug: string) => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current)
-    }
-    setOpenDropdown(slug)
-  }
 
   return (
     <nav className='border-b'>
@@ -45,25 +32,40 @@ export default function Navigation() {
           <span className='text-xs bg-primary/10 px-2 py-1 rounded-md text-primary'>Home</span>
         </Link>
 
-        <div className='ml-auto flex items-center space-x-4'>
-          {stateManagers.map(manager => (
-            <DropdownMenu key={manager.slug} open={openDropdown === manager.slug} onOpenChange={open => setOpenDropdown(open ? manager.slug : null)}>
-              <DropdownMenuTrigger asChild>
-                <Button variant='ghost' onMouseEnter={() => handleMouseEnter(manager.slug)}>
-                  {manager.name}
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align='end' onMouseLeave={handleMouseLeave}>
-                {approaches.map(approach => (
-                  <DropdownMenuItem key={approach.slug} asChild>
-                    <Link href={`/${manager.slug}/${approach.slug}`} className={pathname === `/${manager.slug}/${approach.slug}` ? 'bg-accent' : ''}>
-                      {approach.name}
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ))}
+        <div className='ml-auto flex items-center'>
+          <NavigationMenu>
+            <NavigationMenuList className='gap-1'>
+              {stateManagers.map(manager => (
+                <NavigationMenuItem key={manager.slug}>
+                  <NavigationMenuTrigger className='h-10 px-4 font-medium'>{manager.name}</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className='w-[500px] p-6'>
+                      <div className='mb-4 border-b pb-2'>
+                        <h4 className='text-md font-medium leading-none mb-1'>{manager.name}</h4>
+                      </div>
+                      <div className='grid grid-cols-3 gap-4'>
+                        {approaches.map(approach => (
+                          <Link
+                            key={approach.slug}
+                            href={`/${manager.slug}/${approach.slug}`}
+                            className={cn(
+                              'flex flex-col items-start justify-between rounded-md p-4 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground border transition-colors duration-200',
+                              pathname === `/${manager.slug}/${approach.slug}`
+                                ? 'bg-accent text-accent-foreground border-primary/30'
+                                : 'bg-background border-muted hover:border-primary/20'
+                            )}>
+                            <div className='w-full'>
+                              <div className='text-sm font-medium leading-none mb-2'>{approach.name}</div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
       </div>
     </nav>

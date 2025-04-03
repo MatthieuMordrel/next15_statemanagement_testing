@@ -15,7 +15,8 @@ const techniques = [
       'Components are self-contained, no props needed',
       'No hydration issues because servers renders the loading state',
       'Data Fetching and Caching happen on the client',
-      'Easy to implement and extensive docs'
+      'Easy to implement and extensive docs',
+      'Shell can be static (not an issue with PPR)'
     ],
     cons: [
       'Data fetching starts on the client',

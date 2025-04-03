@@ -7,7 +7,7 @@ export default async function RSC_Await_Page() {
       <div className='space-y-6'>
         <div>
           <h1 className='text-2xl font-bold mb-2'>React Query - Promise Props Approach</h1>
-          <p className='text-muted-foreground'>Promise is passed to the client, we don't need to await the RSC</p>
+          <p className='text-muted-foreground'>Promise is passed to the client, we don&apos;t need to await the RSC</p>
         </div>
 
         <Card>

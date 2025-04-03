@@ -14,7 +14,7 @@ const colorVariants: Record<string, string> = {
 }
 
 // Define a union type for incrementYear
-type IncrementYearType = UseMutateFunction<any, Error, number | undefined, Data> | (() => void)
+type IncrementYearType = UseMutateFunction<Error, number | undefined, Data> | (() => void)
 
 /**
  * This component is only used to display the data, but we should be able to retrieve the data and setter functions directly inside it if needed
@@ -25,10 +25,9 @@ function DataComponent({ data, seconds, color, incrementYear }: { data: Data; se
   // Get the background color class, fallback to a default if color is not in variants
   const bgColorClass = colorVariants[color] || 'bg-gray-100'
 
-  // Handle the incrementYear function based on its type
+  // If the incrementYear is a React Query mutation, we pass the data, if it's just a function that doesn't take param, the extra argument will be ignored
   const handleIncrementYear = () => {
-    // Call the function with undefined as the argument for React Query mutations
-    incrementYear(undefined as any)
+    incrementYear(data)
   }
 
   return (
