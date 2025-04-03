@@ -18,6 +18,8 @@ export async function WrapperSlowComponent_PromiseProps_RSC_Server() {
     queryFn: fetchSlowerData
   })
 
+  console.log('queryClient', dehydrate(queryClient))
+
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <Suspense fallback={<Loading />}>

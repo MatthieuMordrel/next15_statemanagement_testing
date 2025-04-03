@@ -13,23 +13,26 @@ export function fetchDataOptimistic(delay: number = 1000): Data {
   }
 }
 
-// Simulated API calls that return our slow components
 export async function fetchSlowData(): Promise<Data> {
-  await new Promise(resolve => setTimeout(resolve, 2000))
-  return {
-    id: 'fast',
-    title: 'Fast Data',
-    timestamp: new Date().toISOString()
+  // Use absolute URL with the base URL
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+  const res = await fetch(`${baseUrl}/api/dummyDataSlow`, { cache: 'no-store', method: 'GET', headers: { 'Content-Type': 'application/json' } })
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
   }
+  const data = (await res.json()) as Data
+  return data
 }
 
 export async function fetchSlowerData(): Promise<Data> {
-  await new Promise(resolve => setTimeout(resolve, 4000))
-  return {
-    id: 'slow',
-    title: 'Slow Data',
-    timestamp: new Date().toISOString()
+  // Use absolute URL with the base URL
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+  const res = await fetch(`${baseUrl}/api/dummyDataSlower`, { cache: 'no-store', method: 'GET', headers: { 'Content-Type': 'application/json' } })
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
   }
+  const data = (await res.json()) as Data
+  return data
 }
 
 // Simulated error data fetching
