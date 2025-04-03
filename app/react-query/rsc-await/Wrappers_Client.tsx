@@ -8,7 +8,7 @@ export function WrapperSlowComponent_RQ_RSC_Client() {
   const { data, isLoading, isError, error, incrementYear } = useSlowDataRSC()
   return (
     <>
-      {data && <DataComponent data={data} seconds={1} color='blue' incrementYear={incrementYear} />}
+      {data && <DataComponent data={data} seconds={2} color='blue' incrementYear={incrementYear} />}
       {isLoading && <Loading />}
       {isError && <div className='text-red-500'>Error loading slow data: {error?.message}</div>}
     </>
@@ -19,7 +19,7 @@ export function WrapperSlowerComponent_RQ_RSC_Client() {
   const { data, isLoading, isError, error, incrementYear } = useSlowerDataRSC()
   return (
     <>
-      {data && <DataComponent data={data} seconds={1} color='green' incrementYear={incrementYear} />}
+      {data && <DataComponent data={data} seconds={4} color='green' incrementYear={incrementYear} />}
       {isLoading && <Loading />}
       {isError && <div className='text-red-500'>Error loading slower data: {error?.message}</div>}
     </>
