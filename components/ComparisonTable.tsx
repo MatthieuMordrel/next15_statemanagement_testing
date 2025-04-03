@@ -32,18 +32,18 @@ const stateManagers = [
     techniques: [
       {
         name: 'useEffect-based data fetching',
-        pros: ['Atomic state management', 'Great for derived state', 'Simple API', 'Good TypeScript support'],
-        cons: ['May be overkill for simple apps', 'Learning curve for complex state', 'Manual cache management']
+        pros: [''],
+        cons: ['']
       },
       {
         name: 'RSC await with client components',
-        pros: ['Seamless server/client integration', 'Good performance', 'Type-safe', 'Atomic updates'],
-        cons: ['More complex setup', 'May need additional configuration', 'Learning curve for RSC patterns']
+        pros: [''],
+        cons: ['']
       },
       {
         name: 'Promise props with use hook',
-        pros: ['Clean integration with RSC', 'Type-safe', 'Good for streaming', 'Atomic updates'],
-        cons: ['Requires careful error handling', 'May need additional setup', 'Less flexible than other approaches']
+        pros: [''],
+        cons: ['']
       }
     ]
   },
@@ -52,18 +52,18 @@ const stateManagers = [
     techniques: [
       {
         name: 'useEffect-based data fetching',
-        pros: ['Simple API', 'Great performance', 'Small bundle size', 'Easy to test'],
-        cons: ['Manual cache management', 'No built-in loading states', 'May need middleware for complex cases']
+        pros: [''],
+        cons: ['']
       },
       {
         name: 'RSC await with client components',
-        pros: ['Good performance', 'Simple integration', 'Type-safe', 'Easy to test'],
-        cons: ['May need additional setup', 'Less RSC-specific features', 'Manual streaming setup']
+        pros: [''],
+        cons: ['']
       },
       {
         name: 'Promise props with use hook',
-        pros: ['Clean integration', 'Type-safe', 'Good performance', 'Simple API'],
-        cons: ['Manual error handling', 'Less RSC-specific features', 'May need additional setup']
+        pros: [''],
+        cons: ['']
       }
     ]
   },
@@ -71,7 +71,7 @@ const stateManagers = [
     name: 'React Query',
     techniques: [
       {
-        name: 'useEffect-based data fetching',
+        name: 'Standard useQuery approach',
         pros: ['Declarative Approach', 'Simple mental model, all fetches happen on client', 'No boilerplate', 'Fetch where you need'],
         cons: [
           'Data fetching starts on the client',
@@ -83,7 +83,7 @@ const stateManagers = [
         ]
       },
       {
-        name: 'RSC await with client components',
+        name: 'Dehydrating data from the server',
         pros: ['Fast first load', 'Less Waterfalls', 'SEO', 'DB can be called directly? (to confirm)', 'No rerender after mounting'],
         cons: [
           'Less declarative approach (Suspense and Error Boundaries)',
@@ -95,13 +95,20 @@ const stateManagers = [
         ]
       },
       {
-        name: 'Promise props with use hook',
+        name: 'Dehydrating queries from the server',
         pros: [
           'All RSC benefits',
           'queryCache decides what to use, only the query is passed from server',
-          'Directly suspense the client component, not the RSC'
+          'Directly suspends the client component, not the RSC',
+          'Multiple queries can be passed through a single HydrationBoundary'
         ],
-        cons: ['']
+        cons: [
+          'Less declarative approach (Suspense and Error Boundaries)',
+          'Need for serialization/deserialization of the data',
+          'Non-fetch must be explicitely specified to avoid SSG in Next.js',
+          'Require using useSuspenseQuery hook (tbh not a con)',
+          "Probably can't fetch directly from the db (to confirm)"
+        ]
       }
     ]
   },
@@ -110,18 +117,18 @@ const stateManagers = [
     techniques: [
       {
         name: 'useEffect-based data fetching',
-        pros: ['Simple API', 'Built-in cache', 'Fast page navigation', 'Real-time updates'],
-        cons: ['Less feature-rich than React Query', 'May need additional setup', 'Less TypeScript support']
+        pros: [''],
+        cons: ['']
       },
       {
         name: 'RSC await with client components',
-        pros: ['Good RSC support', 'Simple API', 'Fast page navigation', 'Real-time updates'],
-        cons: ['Less RSC-specific features', 'May need additional setup', 'Less TypeScript support']
+        pros: [''],
+        cons: ['']
       },
       {
         name: 'Promise props with use hook',
-        pros: ['Clean RSC integration', 'Simple API', 'Fast page navigation', 'Real-time updates'],
-        cons: ['Less RSC-specific features', 'May need additional setup', 'Less TypeScript support']
+        pros: [''],
+        cons: ['']
       }
     ]
   }

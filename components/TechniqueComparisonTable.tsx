@@ -29,7 +29,7 @@ const techniques = [
   {
     name: 'RSC await with client components',
     dataFetching: {
-      start: 'Data fetching in a parent wrapper RSC',
+      start: 'Data fetching is fully done in a parent wrapper RSC',
       details: 'Triggered after the http request, blocks the rendering of the RSCs until their data is fetched'
     },
 
@@ -43,22 +43,22 @@ const techniques = [
       'Theoretical better TTI thanks to selective hydration'
     ],
     cons: [
-      'Less declarative approach (Suspense and Error Boundaries)',
+      'Less declarative approach (Suspense/Error Boundaries)',
       'Need to pass props around to get the data',
-      'Or use a provider that need to be initalized with each query',
+      'Or a provider needs to be initalized with each query',
       //Because the server doesn't know what is cached on the client, it will always try to fetch the data again and hydrate the cache/client state
       //This is very different from CSR/SPA where the server is only called when needed based on client needs
       'Caching is difficult to manage, esp. on navigation',
       "Server doesn't know what is cached on client",
-      'Extremely hard to integrate (properly) with state management systems',
+      'Hard to integrate with state management',
       'Hydration always has to be considered',
       //Only fetch opt out of the SSG, for the others we need to use connection or force-dynamic as route config
       //With "use cache" this is probably simpler
       'Non-fetch must be explicitely specified to avoid SSG',
       //If we don't wrap the client component in an RSC, we cannot sync the server state on the server and use hooks
-      'Client Components must be wrapped in an RSC itself wrapped in a Suspense',
+      'CC wrapped in an RSC itself wrapped in a Suspense',
       // If we do multiple fetch calls in the same RSC, the suspense boundary only resolve when the last fetch call is resolved
-      'Each wrapper RSC must be unique to the fetching they are doing optimally',
+      'RSC must be unique to the query they are doing',
       'Poor documentation'
     ]
   },
@@ -74,11 +74,7 @@ const techniques = [
       'No need to wrap client components in RSC, use() can be used on client',
       'Directly suspend the client component, not the RSC'
     ],
-    cons: [
-      'CC need to accept a promise as props or hoisting the promise in a parent RSC',
-      'Hydration always has to be considered',
-      'Poor documentation'
-    ]
+    cons: ['Promise has to be passed as prop or hoisted', 'Hydration always has to be considered', 'Poor documentation']
   }
 ]
 

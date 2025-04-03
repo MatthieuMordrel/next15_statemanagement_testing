@@ -13,24 +13,16 @@ export async function WrapperSlowComponent_PromiseProps_RSC_Server() {
     queryFn: fetchSlowData
   })
 
+  queryClient.prefetchQuery({
+    queryKey: ['slowerDataPromiseProps'],
+    queryFn: fetchSlowerData
+  })
+
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <Suspense fallback={<Loading />}>
         <WrapperSlowComponent_RQ_PromiseProps_Client />
       </Suspense>
-    </HydrationBoundary>
-  )
-}
-
-export async function WrapperSlowerComponent_PromiseProps_RSC_Server() {
-  const queryClient = getQueryClient()
-
-  queryClient.prefetchQuery({
-    queryKey: ['slowerDataPromiseProps'],
-    queryFn: fetchSlowerData
-  })
-  return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
       <Suspense fallback={<Loading />}>
         <WrapperSlowerComponent_RQ_PromiseProps_Client />
       </Suspense>

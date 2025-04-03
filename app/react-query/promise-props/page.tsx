@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { WrapperSlowComponent_PromiseProps_RSC_Server, WrapperSlowerComponent_PromiseProps_RSC_Server } from './Wrappers_RSC'
+import { WrapperSlowComponent_PromiseProps_RSC_Server } from './Wrappers_RSC'
 
 export default async function RSC_Await_Page() {
   return (
@@ -17,7 +17,6 @@ export default async function RSC_Await_Page() {
           </CardHeader>
           <CardContent className='space-y-4'>
             <WrapperSlowComponent_PromiseProps_RSC_Server />
-            <WrapperSlowerComponent_PromiseProps_RSC_Server />
           </CardContent>
         </Card>
       </div>
