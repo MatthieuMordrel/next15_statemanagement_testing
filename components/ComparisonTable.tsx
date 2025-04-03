@@ -72,18 +72,36 @@ const stateManagers = [
     techniques: [
       {
         name: 'useEffect-based data fetching',
-        pros: ['Automatic caching', 'Built-in loading/error states', 'Background updates', 'DevTools support'],
-        cons: ['Larger bundle size', 'More complex setup', 'May be overkill for simple apps']
+        pros: ['Declarative Approach', 'Simple mental model, all fetches happen on client', 'No boilerplate', 'Fetch where you need'],
+        cons: [
+          'Data fetching starts on the client',
+          'Need to pass by the server to get the data',
+          'Risk of waterfalls with round-trips',
+          'User must be identified on each request',
+          'No SEO benefits',
+          'Requires a re-render after the mounting'
+        ]
       },
       {
         name: 'RSC await with client components',
-        pros: ['Great RSC support', 'Automatic streaming', 'Built-in cache management', 'DevTools support'],
-        cons: ['Complex setup', 'Learning curve', 'May need additional configuration']
+        pros: ['Fast first load', 'Less Waterfalls', 'SEO', 'DB can be called directly? (to confirm)', 'No rerender after mounting'],
+        cons: [
+          'Less declarative approach (Suspense and Error Boundaries)',
+          'Need to use a provider & RSC wrapper for each query ideally',
+          "Server doesn't know what is cached on client",
+          'Need for serialization/deserialization of the data',
+          'Non-fetch must be explicitely specified to avoid SSG',
+          'Client Components must be wrapped in an RSC itself wrapped in a Suspense'
+        ]
       },
       {
         name: 'Promise props with use hook',
-        pros: ['Great RSC integration', 'Automatic streaming', 'Type-safe', 'DevTools support'],
-        cons: ['Complex setup', 'Learning curve', 'May be overkill for simple apps']
+        pros: [
+          'All RSC benefits',
+          'queryCache decides what to use, only the query is passed from server',
+          'Directly suspense the client component, not the RSC'
+        ],
+        cons: ['']
       }
     ]
   },
