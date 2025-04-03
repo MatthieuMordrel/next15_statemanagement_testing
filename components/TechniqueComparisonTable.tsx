@@ -15,8 +15,7 @@ const techniques = [
       'Components are self-contained, no props needed',
       'No hydration issues because servers renders the loading state',
       'Data Fetching and Caching happen on the client',
-      'Easy to implement and extensive docs',
-      'Shell can be static (not an issue with PPR)'
+      'Easy to implement and extensive docs'
     ],
     cons: [
       'Data fetching starts on the client',
@@ -73,7 +72,8 @@ const techniques = [
     pros: [
       'Same benefits as with RSC',
       'No need to wrap client components in RSC, use() can be used on client',
-      'Directly suspend the client component, not the RSC'
+      'Directly suspend the client component, not the RSC',
+      'Turns from dynamic to static (integrate with router cache)'
     ],
     cons: ['Promise has to be passed as prop or hoisted', 'Hydration always has to be considered', 'Poor documentation']
   }
