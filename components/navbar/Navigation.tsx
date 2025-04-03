@@ -54,8 +54,8 @@ export default function Navigation() {
                                 ? 'bg-accent text-accent-foreground border-primary/30'
                                 : 'bg-background border-muted hover:border-primary/20'
                             )}>
-                            <div className='w-full'>
-                              <div className='text-sm font-medium leading-none mb-2'>{approach.name}</div>
+                            <div className='w-full flex justify-center items-center'>
+                              <div className='text-sm font-medium leading-none'>{approach.name}</div>
                             </div>
                           </Link>
                         ))}
