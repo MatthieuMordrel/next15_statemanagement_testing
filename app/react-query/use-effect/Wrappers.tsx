@@ -5,7 +5,7 @@ import { Loading } from '@/components/ui/loading'
 import { useSlowData, useSlowerData } from '@/hooks/useSlowData'
 
 export function WrapperSlowComponent_RQ_Effect() {
-  const { data, isLoading, isError, error, incrementYear } = useSlowData()
+  const { data, isLoading, isError, error, incrementYear} = useSlowData()
   return (
     <>
       {data && <DataComponent data={data} seconds={1} color='blue' incrementYear={incrementYear} />}

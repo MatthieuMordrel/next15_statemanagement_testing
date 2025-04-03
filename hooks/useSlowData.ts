@@ -11,19 +11,16 @@ function createIncrementYearMutation(queryKey: string, fetchFn: () => Promise<an
       const data = queryClient.getQueryData([queryKey]) as Data
       queryClient.setQueryData([queryKey], {
         ...data,
-        timestamp: (new Date(data.timestamp).getFullYear() + 1).toString()
+        timestamp: (new Date(data.timestamp).getFullYear() + 1).toString() + ' (will revert to server state when optimistic update finishes)'
       })
       return data
     },
     mutationFn: async () => {
       const data = await fetchFn()
-      return {
-        ...data,
-        timestamp: (new Date().getFullYear() + 1).toString()
-      }
+      return data
     },
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: [queryKey] })
+    onSuccess: (data, variables, context) => {
+      queryClient.setQueryData([queryKey], data)
     }
   })
 }
