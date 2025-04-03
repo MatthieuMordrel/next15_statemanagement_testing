@@ -1,20 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Loading } from '@/components/ui/loading'
-import { fetchSlowData, fetchSlowerData } from '@/lib/data'
 import { Suspense } from 'react'
-import { WrapperSlowComponent_RSC, WrapperSlowerComponent_RSC } from '../Wrappers'
-
-async function SlowWrapper() {
-  // The await here allows the component to suspend
-  const data = await fetchSlowData()
-  return <WrapperSlowComponent_RSC data={data} />
-}
-
-async function SlowerWrapper() {
-  // The await here allows the component to suspend
-  const data = await fetchSlowerData()
-  return <WrapperSlowerComponent_RSC data={data} />
-}
+import { WrapperSlowComponent_RSC, WrapperSlowerComponent_RSC } from './Wrappers'
 
 export default function VanillaRscAwaitPage() {
   return (
@@ -32,10 +19,10 @@ export default function VanillaRscAwaitPage() {
           </CardHeader>
           <CardContent className='space-y-4'>
             <Suspense fallback={<Loading />}>
-              <SlowWrapper />
+              <WrapperSlowComponent_RSC />
             </Suspense>
             <Suspense fallback={<Loading />}>
-              <SlowerWrapper />
+              <WrapperSlowerComponent_RSC />
             </Suspense>
           </CardContent>
         </Card>
