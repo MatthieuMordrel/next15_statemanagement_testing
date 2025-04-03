@@ -1,7 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { connection } from 'next/dist/server/request/connection'
 import { WrapperSlowComponent_PromiseProps_RSC_Server } from './Wrappers_RSC'
 
 export default async function RSC_Await_Page() {
+  await connection()
   return (
     <div className='container py-8'>
       <div className='space-y-6'>
