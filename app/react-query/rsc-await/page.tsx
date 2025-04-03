@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Loading } from '@/components/ui/loading'
 import { Suspense } from 'react'
-import { WrapperSlowComponent_RQ_RSC_Server, WrapperSlowerComponent_RQ_RSC_Server } from './Wrappers copy'
+import { WrapperSlowComponent_RQ_RSC_Server, WrapperSlowerComponent_RQ_RSC_Server } from './Wrappers_RSC'
 
 export default async function RSC_Await_Page() {
   return (

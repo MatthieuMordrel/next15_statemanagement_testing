@@ -2,10 +2,10 @@
 
 import { WrapperSlowComponent, WrapperSlowerComponent } from '@/app/vanilla/Wrappers'
 import { Loading } from '@/components/ui/loading'
-import { useSlowData, useSlowerData } from '@/hooks/useSlowData'
+import { useSlowDataRSC, useSlowerDataRSC } from '@/hooks/useSlowData'
 
 export function WrapperSlowComponent_RQ_RSC_Client() {
-  const { data, isLoading, isError, error } = useSlowData()
+  const { data, isLoading, isError, error } = useSlowDataRSC()
   return (
     <>
       {data && <WrapperSlowComponent data={data} />}
@@ -16,7 +16,7 @@ export function WrapperSlowComponent_RQ_RSC_Client() {
 }
 
 export function WrapperSlowerComponent_RQ_RSC_Client() {
-  const { data, isLoading, isError, error } = useSlowerData()
+  const { data, isLoading, isError, error } = useSlowerDataRSC()
   return (
     <>
       {data && <WrapperSlowerComponent data={data} />}
