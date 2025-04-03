@@ -1,26 +1,47 @@
 import { Data, fetchSlowData, fetchSlowerData } from '@/lib/data'
 import { useMutation, useQuery, useQueryClient, useSuspenseQuery } from '@tanstack/react-query'
+import { useRef } from 'react'
 
 // Reusable incrementYear mutation factory
 function createIncrementYearMutation(queryKey: string, fetchFn: () => Promise<any>) {
   const queryClient = useQueryClient()
+  // Use a ref to track the most recent mutation timestamp
+  const latestMutationRef = useRef<number>(0)
+
   return useMutation({
     mutationKey: [`incrementYear-${queryKey}`],
     onMutate: async () => {
+      // Cancel any in-flight queries
       await queryClient.cancelQueries({ queryKey: [queryKey] })
+
+      // Get current data
       const data = queryClient.getQueryData([queryKey]) as Data
+
+      // Update the data optimistically
       queryClient.setQueryData([queryKey], {
         ...data,
         timestamp: (new Date(data.timestamp).getFullYear() + 1).toString() + ' (will revert to server state when optimistic update finishes)'
       })
+
+      // Return the current data for potential rollback
       return data
     },
     mutationFn: async () => {
+      // Assign a timestamp to this mutation, this helps us determine if this is the most recent mutation
+      const mutationTimestamp = Date.now()
+      latestMutationRef.current = mutationTimestamp
+
+      // Fetch the data
       const data = await fetchFn()
-      return data
+
+      // Return both the data and the timestamp
+      return { data, mutationTimestamp }
     },
-    onSuccess: (data, variables, context) => {
-      queryClient.setQueryData([queryKey], data)
+    onSuccess: (result, variables, context) => {
+      // Only update the query cache if this is the most recent mutation
+      if (result.mutationTimestamp === latestMutationRef.current) {
+        queryClient.setQueryData([queryKey], result.data)
+      }
     }
   })
 }
