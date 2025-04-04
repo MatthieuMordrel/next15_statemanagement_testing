@@ -31,13 +31,12 @@ export default function Navigation() {
 
   return (
     <nav className='border-b'>
-      <div className='container flex h-16 items-center px-4'>
+      <div className='flex h-16 items-center px-4 pr-12'>
         <Link href='/' className='font-bold text-xl hover:underline flex items-center gap-2'>
           <span className='text-xs bg-primary/10 px-2 py-1 rounded-md text-primary'>Home</span>
         </Link>
 
         <div className='ml-auto flex items-center gap-4'>
-          <PrefetchToggle />
           <NavigationMenu>
             <NavigationMenuList className='gap-1'>
               {stateManagers.map(manager => (
@@ -72,6 +71,7 @@ export default function Navigation() {
               ))}
             </NavigationMenuList>
           </NavigationMenu>
+          <PrefetchToggle />
         </div>
       </div>
     </nav>

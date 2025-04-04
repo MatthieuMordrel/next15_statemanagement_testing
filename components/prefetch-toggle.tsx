@@ -8,9 +8,9 @@ import { useAtom } from 'jotai'
 import { useEffect, useState } from 'react'
 
 const states = [
-  { value: null, label: 'null' },
-  { value: true, label: 'true' },
-  { value: false, label: 'false' }
+  { value: null, label: 'prefetch: null' },
+  { value: true, label: 'prefetch: true' },
+  { value: false, label: 'prefetch: false' }
 ] as const
 
 export function PrefetchToggle() {
@@ -39,7 +39,7 @@ export function PrefetchToggle() {
         variant='ghost'
         size='sm'
         className={cn(
-          'w-24 justify-between hover:bg-transparent',
+          'w-32 justify-between hover:bg-transparent',
           prefetchEnabled === null && 'bg-primary/10 text-primary hover:bg-primary/20',
           prefetchEnabled === true && 'bg-green-500/10 text-green-500 hover:bg-green-500/20',
           prefetchEnabled === false && 'bg-red-500/10 text-red-500 hover:bg-red-500/20'
@@ -48,7 +48,6 @@ export function PrefetchToggle() {
         {states[currentIndex].label}
         <span className='ml-2 text-xs opacity-50'>↻</span>
       </Button>
-      <span className='text-sm font-medium'>Prefetch</span>
     </div>
   )
 }
