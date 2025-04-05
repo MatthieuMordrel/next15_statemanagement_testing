@@ -1,7 +1,25 @@
-export default function JotaiPromisePropsPage() {
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { WrapperSlowComponent_Jotai_PromiseProps_Server } from './Wrappers_RSC'
+
+export default async function JotaiPromisePropsPage() {
   return (
     <div className='container py-8'>
-      <h1 className='text-2xl font-bold mb-4'>Jotai - Promise Props Approach</h1>
+      <div className='space-y-6'>
+        <div>
+          <h1 className='text-2xl font-bold mb-2'>Jotai - Promise Props Approach</h1>
+          <p className='text-muted-foreground'>Requests are started on the server and passed as promises to the client.</p>
+        </div>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Data Fetching Example</CardTitle>
+            <CardDescription>Using Jotai with promise-based data fetching</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <WrapperSlowComponent_Jotai_PromiseProps_Server />
+          </CardContent>
+        </Card>
+      </div>
     </div>
   )
 }
