@@ -14,8 +14,14 @@
             "No automatic background updates"
           ],
           "navigation": {
-            "firstLoad": false,
-            "subsequent": true
+            "firstLoad": {
+              "instant": false,
+              "comment": "Data fetched on mount"
+            },
+            "subsequent": {
+              "instant": true,
+              "comment": "If stored in context + router cache"
+            }
           }
         },
         {
@@ -23,8 +29,14 @@
           "pros": ["Simplest approach"],
           "cons": ["Data is fixed at request time", "Need to be passed through props", "It's never enough"],
           "navigation": {
-            "firstLoad": false,
-            "subsequent": false
+            "firstLoad": {
+              "instant": false,
+              "comment": "With prefetching"
+            },
+            "subsequent": {
+              "instant": false,
+              "comment": "With prefetching"
+            }
           }
         },
         {
@@ -32,8 +44,14 @@
           "pros": [""],
           "cons": ["Requires using context for DI = boilerplate/provider hell", "No caching on the client side"],
           "navigation": {
-            "firstLoad": true,
-            "subsequent": true
+            "firstLoad": {
+              "instant": true,
+              "comment": "With prefetching"
+            },
+            "subsequent": {
+              "instant": true,
+              "comment": "Through router cache"
+            }
           }
         }
       ]
@@ -46,8 +64,14 @@
           "pros": ["Instant updates"],
           "cons": ["Heavy boilerplate", "No synching with server", "No caching on the client side", "Manual management of loading/error states"],
           "navigation": {
-            "firstLoad": false,
-            "subsequent": true
+            "firstLoad": {
+              "instant": false,
+              "comment": "Data fetched on mount"
+            },
+            "subsequent": {
+              "instant": true,
+              "comment": "Via atom + router cache"
+            }
           }
         },
         {
@@ -55,8 +79,14 @@
           "pros": [""],
           "cons": [""],
           "navigation": {
-            "firstLoad": false,
-            "subsequent": false
+            "firstLoad": {
+              "instant": false,
+              "comment": "With prefetching"
+            },
+            "subsequent": {
+              "instant": false,
+              "comment": "With prefetching"
+            }
           }
         },
         {
@@ -64,8 +94,14 @@
           "pros": [""],
           "cons": ["Hard to setup if even possible", "Weird unwrapping of promise"],
           "navigation": {
-            "firstLoad": true,
-            "subsequent": true
+            "firstLoad": {
+              "instant": true,
+              "comment": "With prefetching"
+            },
+            "subsequent": {
+              "instant": true,
+              "comment": "Through router cache"
+            }
           }
         }
       ]
@@ -78,8 +114,14 @@
           "pros": [""],
           "cons": [""],
           "navigation": {
-            "firstLoad": false,
-            "subsequent": true
+            "firstLoad": {
+              "instant": false,
+              "comment": "Data fetched on mount"
+            },
+            "subsequent": {
+              "instant": true,
+              "comment": "Via atom + router cache"
+            }
           }
         },
         {
@@ -87,8 +129,14 @@
           "pros": [""],
           "cons": [""],
           "navigation": {
-            "firstLoad": false,
-            "subsequent": false
+            "firstLoad": {
+              "instant": false,
+              "comment": "With prefetching"
+            },
+            "subsequent": {
+              "instant": false,
+              "comment": "With prefetching"
+            }
           }
         },
         {
@@ -96,8 +144,14 @@
           "pros": [""],
           "cons": [""],
           "navigation": {
-            "firstLoad": true,
-            "subsequent": true
+            "firstLoad": {
+              "instant": true,
+              "comment": "With prefetching"
+            },
+            "subsequent": {
+              "instant": true,
+              "comment": "Through router cache"
+            }
           }
         }
       ]
@@ -117,8 +171,14 @@
             "Requires a re-render after the mounting"
           ],
           "navigation": {
-            "firstLoad": false,
-            "subsequent": true
+            "firstLoad": {
+              "instant": false,
+              "comment": "Data fetched on mount"
+            },
+            "subsequent": {
+              "instant": true,
+              "comment": "Through router cache"
+            }
           }
         },
         {
@@ -134,8 +194,14 @@
             "Need to create a wrapper for each query + wrapper function"
           ],
           "navigation": {
-            "firstLoad": false,
-            "subsequent": false
+            "firstLoad": {
+              "instant": false,
+              "comment": "With prefetching"
+            },
+            "subsequent": {
+              "instant": false,
+              "comment": "With prefetching"
+            }
           }
         },
         {
@@ -156,8 +222,14 @@
             "Need to create a wrapper for each query + wrapper function"
           ],
           "navigation": {
-            "firstLoad": true,
-            "subsequent": true
+            "firstLoad": {
+              "instant": true,
+              "comment": "With prefetching"
+            },
+            "subsequent": {
+              "instant": true,
+              "comment": "Through router cache"
+            }
           }
         }
       ]
@@ -170,8 +242,14 @@
           "pros": ["Same than React Query"],
           "cons": ["Same than React Query", "It's not React Query"],
           "navigation": {
-            "firstLoad": false,
-            "subsequent": true
+            "firstLoad": {
+              "instant": false,
+              "comment": "With prefetching"
+            },
+            "subsequent": {
+              "instant": false,
+              "comment": "With prefetching"
+            }
           }
         },
         {
@@ -179,8 +257,14 @@
           "pros": ["Same than React Query", "Much simpler approach than React Query", "No need for a special hook"],
           "cons": ["Same than React Query", "It's not React Query"],
           "navigation": {
-            "firstLoad": false,
-            "subsequent": false
+            "firstLoad": {
+              "instant": false,
+              "comment": "With prefetching"
+            },
+            "subsequent": {
+              "instant": false,
+              "comment": "With prefetching"
+            }
           }
         },
         {
@@ -188,8 +272,14 @@
           "pros": ["Same than React Query", "Much simpler approach than React Query", "No need for a special hook"],
           "cons": ["Typescript thinks data is undefined", "It's not React Query"],
           "navigation": {
-            "firstLoad": true,
-            "subsequent": true
+            "firstLoad": {
+              "instant": true,
+              "comment": "With prefetching"
+            },
+            "subsequent": {
+              "instant": true,
+              "comment": "Through router cache"
+            }
           }
         }
       ]

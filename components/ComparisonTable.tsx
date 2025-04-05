@@ -117,8 +117,12 @@ export function ComparisonTable() {
                     {visibleColumns['Data Availability'] && (
                       <TableCell>
                         <div className='flex items-center gap-2'>
-                          {technique.navigation.firstLoad ? <Zap className='size-4 text-green-500' /> : <ZapOff className='size-4 text-red-500' />}
-                          <span className='text-sm'>{technique.navigation.firstLoad ? 'With prefetching' : 'Data fetched on mount'}</span>
+                          {technique.navigation.firstLoad.instant ? (
+                            <Zap className='size-4 text-green-500' />
+                          ) : (
+                            <ZapOff className='size-4 text-red-500' />
+                          )}
+                          <span className='text-sm'>{technique.navigation.firstLoad.comment}</span>
                         </div>
                       </TableCell>
                     )}
@@ -127,8 +131,12 @@ export function ComparisonTable() {
                     {visibleColumns['Data Availability'] && (
                       <TableCell>
                         <div className='flex items-center gap-2'>
-                          {technique.navigation.subsequent ? <Zap className='size-4 text-green-500' /> : <ZapOff className='size-4 text-red-500' />}
-                          <span className='text-sm'>{technique.navigation.subsequent ? 'Smart caching on client' : 'New fetch each time'}</span>
+                          {technique.navigation.subsequent.instant ? (
+                            <Zap className='size-4 text-green-500' />
+                          ) : (
+                            <ZapOff className='size-4 text-red-500' />
+                          )}
+                          <span className='text-sm'>{technique.navigation.subsequent.comment}</span>
                         </div>
                       </TableCell>
                     )}
