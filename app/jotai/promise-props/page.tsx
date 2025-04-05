@@ -13,7 +13,9 @@ export default async function JotaiPromisePropsPage() {
         <Card>
           <CardHeader>
             <CardTitle>Data Fetching Example</CardTitle>
-            <CardDescription>Using Jotai with promise-based data fetching</CardDescription>
+            <CardDescription>
+              Using Jotai with promise-based data fetching - <span className='text-red-500'>Incrementing the year doesn't work</span>
+            </CardDescription>
           </CardHeader>
           <CardContent className='space-y-4'>
             <WrapperSlowComponent_Jotai_PromiseProps_Server />
