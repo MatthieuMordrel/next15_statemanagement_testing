@@ -1,4 +1,4 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 
 export function OverviewCard() {
   return (
@@ -41,6 +41,27 @@ export function OverviewCard() {
           </ul>
         </div>
       </CardContent>
+      <CardHeader>
+        <CardTitle>Conclusion</CardTitle>
+        <CardDescription>
+          Without surprise Tanstack React Query is the best solution.
+          <br />
+          By dehydrating queries, you can benefit from fast first load, even instant with prefetching.
+          <br />
+          On subsequent navigation, stale data is shown and refetch on mount without triggering suspense. You can probably show fresh data by
+          implementing Tanstack Query prefetching on link mouse over/entering the viewport.
+          <br />
+          Suspense boundaries can be placed around the client component, and you can generally limit the number of Hydration Boundaries needed because
+          only queries are passed to the client.
+          <br />
+          You also benefit from all Tanstack Query native features like optimistic updates, dev tools, smart refetches, etc.
+          <br />
+          However it does still seems early, as there are some issues with the refetches sometimes not being triggered.
+        </CardDescription>
+      </CardHeader>
+      <CardFooter>
+        <p className='text-sm text-muted-foreground'>This project is a work in progress. If you have any feedback, please let me know.</p>
+      </CardFooter>
     </Card>
   )
 }

@@ -1,12 +1,11 @@
 import { Loading } from '@/components/ui/loading'
 import { fetchSlowData, fetchSlowerData } from '@/lib/data'
-import { getQueryClient } from '@/lib/getQueryClient'
-import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query'
 import { Suspense } from 'react'
 import { WrapperSlowComponent_RQ_PromiseProps_Client, WrapperSlowerComponent_RQ_PromiseProps_Client } from './Wrappers_Client'
 
 export async function WrapperSlowComponent_PromiseProps_RSC_Server() {
-  const queryClient = getQueryClient()
+  const queryClient = new QueryClient()
 
   queryClient.prefetchQuery({
     queryKey: ['slowDataPromiseProps'],

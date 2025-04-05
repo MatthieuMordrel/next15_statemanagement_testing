@@ -107,7 +107,7 @@ export function useSlowerDataRSC() {
   }
 }
 
-export function useSlowDataPromiseProps() {
+export function   useSlowDataPromiseProps() {
   const query = useSuspenseQuery({
     queryKey: ['slowDataPromiseProps'],
     queryFn: fetchSlowData

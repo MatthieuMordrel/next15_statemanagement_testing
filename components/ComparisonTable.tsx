@@ -6,7 +6,7 @@ import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMe
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import stateManagersData from '@/data/stateManagers.json'
 import { useAtom } from 'jotai'
-import { Zap, ZapOff } from 'lucide-react'
+import { PlugZap, Zap, ZapOff } from 'lucide-react'
 import React from 'react'
 
 const stateManagers = stateManagersData.stateManagers
@@ -117,8 +117,12 @@ export function ComparisonTable() {
                     {visibleColumns['Data Availability'] && (
                       <TableCell>
                         <div className='flex items-center gap-2'>
-                          {technique.navigation.firstLoad.instant ? (
+                          {technique.navigation.firstLoad.instant === 'instant' ? (
                             <Zap className='size-4 text-green-500' />
+                          ) : technique.navigation.firstLoad.instant === 'prefetching' ? (
+                            <Zap className='size-4 text-yellow-500' />
+                          ) : technique.navigation.firstLoad.instant === 'broken' ? (
+                            <PlugZap className='size-4 text-red-500' />
                           ) : (
                             <ZapOff className='size-4 text-red-500' />
                           )}
@@ -131,8 +135,12 @@ export function ComparisonTable() {
                     {visibleColumns['Data Availability'] && (
                       <TableCell>
                         <div className='flex items-center gap-2'>
-                          {technique.navigation.subsequent.instant ? (
+                          {technique.navigation.subsequent.instant === 'instant' ? (
                             <Zap className='size-4 text-green-500' />
+                          ) : technique.navigation.subsequent.instant === 'prefetching' ? (
+                            <Zap className='size-4 text-yellow-500' />
+                          ) : technique.navigation.subsequent.instant === 'broken' ? (
+                            <PlugZap className='size-4 text-red-500' />
                           ) : (
                             <ZapOff className='size-4 text-red-500' />
                           )}
