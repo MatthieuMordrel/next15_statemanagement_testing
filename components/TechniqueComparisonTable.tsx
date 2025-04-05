@@ -66,7 +66,7 @@ const techniques = [
     name: 'Promise props with use hook',
     dataFetching: {
       start: 'Data fetching starts in any parent RSC',
-      details: 'Triggered after the http request, blocks the rendering of the client components fetching data'
+      details: 'Triggered after the http request, blocks the rendering of the client components receiving the data'
     },
 
     pros: [

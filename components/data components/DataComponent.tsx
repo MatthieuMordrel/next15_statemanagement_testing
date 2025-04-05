@@ -19,7 +19,7 @@ type IncrementYearType = UseMutateFunction<Error, number | undefined, Data> | ((
 /**
  * This component is only used to display the data, but we should be able to retrieve the data and setter functions directly inside it if needed
  */
-function DataComponent({ data, seconds, color, incrementYear }: { data: Data; seconds: number; color: string; incrementYear: IncrementYearType }) {
+function DataComponent({ data, seconds, color, incrementYear }: { data: Data; seconds: number; color: string; incrementYear?: IncrementYearType }) {
   const renders = useCountRenders()
 
   // Get the background color class, fallback to a default if color is not in variants
@@ -27,7 +27,7 @@ function DataComponent({ data, seconds, color, incrementYear }: { data: Data; se
 
   // If the incrementYear is a React Query mutation, we pass the data, if it's just a function that doesn't take param, the extra argument will be ignored
   const handleIncrementYear = () => {
-    incrementYear(data)
+    incrementYear?.(data)
   }
 
   return (

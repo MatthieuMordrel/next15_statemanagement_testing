@@ -91,7 +91,8 @@ const stateManagers = [
           "Server doesn't know what is cached on client",
           'Need for serialization/deserialization of the data',
           'Non-fetch must be explicitely specified to avoid SSG',
-          'Client Components must be wrapped in an RSC itself wrapped in a Suspense'
+          'Client Components must be wrapped in an RSC itself wrapped in a Suspense',
+          'Need to create a wrapper for each query + wrapper function'
         ]
       },
       {
@@ -100,14 +101,16 @@ const stateManagers = [
           'All RSC benefits',
           'queryCache decides what to use, only the query is passed from server',
           'Directly suspends the client component, not the RSC',
-          'Multiple queries can be passed through a single HydrationBoundary'
+          'Multiple queries can be passed through a single HydrationBoundary',
+          'Perfect typescript with useSuspenseQuery hook'
         ],
         cons: [
           'Less declarative approach (Suspense and Error Boundaries)',
           'Need for serialization/deserialization of the data',
           'Non-fetch must be explicitely specified to avoid SSG in Next.js',
           'Require using useSuspenseQuery hook (tbh not a con)',
-          "Probably can't fetch directly from the db (to confirm)"
+          "Probably can't fetch directly from the db (to confirm)",
+          'Need to create a wrapper for each query + wrapper function'
         ]
       }
     ]
@@ -117,18 +120,18 @@ const stateManagers = [
     techniques: [
       {
         name: 'useEffect-based data fetching',
-        pros: [''],
-        cons: ['']
+        pros: ['Same than React Query'],
+        cons: ['Same than React Query', "It's not React Query"]
       },
       {
         name: 'RSC await with client components',
-        pros: [''],
-        cons: ['']
+        pros: ['Same than React Query', 'Much simpler approach than React Query', 'No need for a special hook'],
+        cons: ['Same than React Query', "It's not React Query"]
       },
       {
         name: 'Promise props with use hook',
-        pros: [''],
-        cons: ['']
+        pros: ['Same than React Query', 'Much simpler approach than React Query', 'No need for a special hook'],
+        cons: ['Typescript thinks data is undefined', "It's not React Query"]
       }
     ]
   }
