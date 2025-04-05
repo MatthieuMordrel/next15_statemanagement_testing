@@ -15,7 +15,7 @@ export default async function JotaiPromisePropsPage() {
             <CardTitle>Data Fetching Example</CardTitle>
             <CardDescription>Using Jotai with promise-based data fetching</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className='space-y-4'>
             <WrapperSlowComponent_Jotai_PromiseProps_Server />
           </CardContent>
         </Card>

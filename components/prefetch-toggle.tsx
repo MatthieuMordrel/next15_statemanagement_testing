@@ -24,8 +24,7 @@ export function PrefetchToggle() {
   if (!isHydrated) {
     return (
       <div className='flex items-center space-x-2'>
-        <Skeleton className='h-6 w-11 rounded-full' />
-        <Skeleton className='h-5 w-24' />
+        <Skeleton className='h-9 w-32 rounded-md' />
       </div>
     )
   }
