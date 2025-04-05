@@ -6,13 +6,15 @@ import { useAtom } from 'jotai'
 import { slowDataPromiseAtom, slowerDataPromiseAtom } from './atoms'
 
 export function WrapperSlowComponent_Jotai_PromiseProps_Client() {
-  const [data] = useAtom(slowDataPromiseAtom)
+  //For some reason, the useAtom hook unwrap the promise
+  const [promiseButData, setPromiseButData] = useAtom(slowDataPromiseAtom)
 
-  return <DataComponent data={data!} seconds={1} color='blue' incrementYear={incrementYear} />
+  return <DataComponent data={promiseButData!} seconds={1} color='blue' incrementYear={incrementYear} />
 }
 
 export function WrapperSlowerComponent_Jotai_PromiseProps_Client() {
-  const [data] = useAtom(slowerDataPromiseAtom)
+  //For some reason, the useAtom hook unwrap the promise
+  const [promiseButData, setPromiseButData] = useAtom(slowerDataPromiseAtom)
 
-  return <DataComponent data={data!} seconds={1} color='green' incrementYear={incrementYear} />
+  return <DataComponent data={promiseButData!} seconds={1} color='green' incrementYear={incrementYear} />
 }
