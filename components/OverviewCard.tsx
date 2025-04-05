@@ -16,7 +16,7 @@ export function OverviewCard() {
           We are solely focusing on the pros and cons of the different strategies that can be adopted for data fetching and state management in an SSR
           context.
           <br />
-          We are testing both client state management and server state management because it's fun, but 99% of the time if your data lives on the
+          We are testing both client state management and server state management because it&apos;s fun, but 99% of the time if your data lives on the
           server, you should very likely use a server state management solution.
         </CardDescription>
       </CardHeader>
