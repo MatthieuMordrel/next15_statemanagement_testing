@@ -1,9 +1,9 @@
-import { Data, fetchSlowData, fetchSlowerData } from '@/lib/data'
+import { Data, fetchSlowData, fetchSlowerData, incrementYear } from '@/lib/data'
 import { useMutation, useQuery, useQueryClient, useSuspenseQuery } from '@tanstack/react-query'
 import { useRef } from 'react'
 
 // Reusable incrementYear mutation factory
-function createIncrementYearMutation(queryKey: string, fetchFn: () => Promise<any>) {
+function createIncrementYearMutation(queryKey: string, fetchFn: () => Promise<Data>) {
   const queryClient = useQueryClient()
   // Use a ref to track the most recent mutation timestamp
   const latestMutationRef = useRef<number>(0)
@@ -18,10 +18,7 @@ function createIncrementYearMutation(queryKey: string, fetchFn: () => Promise<an
       const data = queryClient.getQueryData([queryKey]) as Data
 
       // Update the data optimistically
-      queryClient.setQueryData([queryKey], {
-        ...data,
-        timestamp: (new Date(data.timestamp).getFullYear() + 1).toString() + ' (will revert to server state when optimistic update finishes)'
-      })
+      queryClient.setQueryData([queryKey], incrementYear(data))
 
       // Return the current data for potential rollback
       return data

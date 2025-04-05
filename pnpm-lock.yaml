@@ -35,6 +35,9 @@ importers:
       jotai:
         specifier: ^2.12.2
         version: 2.12.2(@types/react@19.0.12)(react@19.1.0)
+      jotai-ssr:
+        specifier: ^0.2.0
+        version: 0.2.0(jotai@2.12.2(@types/react@19.0.12)(react@19.1.0))(react@19.1.0)
       lightningcss-win32-arm64-msvc:
         specifier: ^1.29.2
         version: 1.29.2
@@ -1542,6 +1545,12 @@ packages:
   jiti@2.4.2:
     resolution: {integrity: sha512-rg9zJN+G4n2nfJl5MW3BMygZX56zKPNVEYYqq7adpmMh4Jn2QNEwhvQlFy6jPVdcod7txZtKHWnyZiA3a0zP7A==}
     hasBin: true
+
+  jotai-ssr@0.2.0:
+    resolution: {integrity: sha512-WZAisk8i4K2ITykAkyOR2EP3j2W4QGaeJrez+udcg5uELLzTEtGvqzo5/rgd7CFUCM4ONaqBJrmLuLWBiseI8g==}
+    peerDependencies:
+      jotai: '>=2.0.0'
+      react: '>=18.0.0'
 
   jotai@2.12.2:
     resolution: {integrity: sha512-oN8715y7MkjXlSrpyjlR887TOuc/NLZMs9gvgtfWH/JP47ChwO0lR2ijSwBvPMYyXRAPT+liIAhuBavluKGgtA==}
@@ -3710,6 +3719,11 @@ snapshots:
       set-function-name: 2.0.2
 
   jiti@2.4.2: {}
+
+  jotai-ssr@0.2.0(jotai@2.12.2(@types/react@19.0.12)(react@19.1.0))(react@19.1.0):
+    dependencies:
+      jotai: 2.12.2(@types/react@19.0.12)(react@19.1.0)
+      react: 19.1.0
 
   jotai@2.12.2(@types/react@19.0.12)(react@19.1.0):
     optionalDependencies:

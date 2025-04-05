@@ -2,7 +2,7 @@
 
 import DataComponent from '@/components/data components/DataComponent'
 import { Loading } from '@/components/ui/loading'
-import { Data, fetchSlowData, fetchSlowerData } from '@/lib/data'
+import { Data, fetchSlowData, fetchSlowerData, incrementYear } from '@/lib/data'
 import { atom, useAtom } from 'jotai'
 import { useEffect } from 'react'
 
@@ -13,12 +13,7 @@ const slowErrorAtom = atom<Error | null>(null)
 const slowIncrementYearAtom = atom(null, (get, set) => {
   const currentData = get(slowDataAtom)
   if (currentData) {
-    const date = new Date(currentData.timestamp)
-    date.setFullYear(date.getFullYear() + 1)
-    set(slowDataAtom, {
-      ...currentData,
-      timestamp: date.toISOString()
-    })
+    set(slowDataAtom, incrementYear(currentData))
   }
 })
 
@@ -29,12 +24,7 @@ const slowerErrorAtom = atom<Error | null>(null)
 const slowerIncrementYearAtom = atom(null, (get, set) => {
   const currentData = get(slowerDataAtom)
   if (currentData) {
-    const date = new Date(currentData.timestamp)
-    date.setFullYear(date.getFullYear() + 1)
-    set(slowerDataAtom, {
-      ...currentData,
-      timestamp: date.toISOString()
-    })
+    set(slowerDataAtom, incrementYear(currentData))
   }
 })
 

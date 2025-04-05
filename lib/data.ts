@@ -40,3 +40,9 @@ export async function fetchErrorData(): Promise<Data> {
   await new Promise(resolve => setTimeout(resolve, 1000))
   throw new Error('Failed to fetch data')
 }
+
+export function incrementYear(data: Data) {
+  const date = new Date(data.timestamp)
+  date.setFullYear(date.getFullYear() + 1)
+  return { ...data, timestamp: date.toISOString() }
+}
