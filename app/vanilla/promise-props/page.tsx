@@ -1,7 +1,5 @@
-import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Loading } from '@/components/ui/loading'
-import Link from 'next/link'
 import { Suspense } from 'react'
 import { WrapperSlowComponent_Use, WrapperSlowerComponent_Use } from './Wrappers'
 
@@ -12,12 +10,6 @@ export default function VanillaPromisePropsPage() {
         <div>
           <h1 className='text-2xl font-bold mb-2'>Vanilla React - Promise Props Approach</h1>
           <p className='text-muted-foreground'>Using the use hook with promise props for streaming. Each component streams independently.</p>
-        </div>
-
-        <div>
-          <Button asChild variant='outline'>
-            <Link href='/vanilla/promise-props/second'>Go to Second Page</Link>
-          </Button>
         </div>
 
         <Card>

@@ -6,7 +6,7 @@ const stateManagers = [
     techniques: [
       {
         name: 'useEffect-based data fetching',
-        pros: ['Simple and straightforward implementation', 'Built into React', 'Easy to understand for beginners', 'No additional dependencies'],
+        pros: ['Built into React', 'Easy to understand for beginners', 'No additional dependencies'],
         cons: [
           'Boilerplate',
           'Manual cache management',
@@ -17,12 +17,12 @@ const stateManagers = [
       },
       {
         name: 'RSC await with client components',
-        pros: ['Server-side data fetching', 'Better performance', 'Automatic streaming', 'Built-in error boundaries'],
-        cons: ['More complex setup', 'Requires careful component splitting', 'May need additional client-side state management']
+        pros: ['Simplest approach'],
+        cons: ['Data is fixed at request time', 'Need to be passed through props', "It's never enough"]
       },
       {
         name: 'Promise props with use hook',
-        pros: ['Simple mental model'],
+        pros: [''],
         cons: ['Requires using context for DI = boilerplate/provider hell', 'No caching on the client side']
       }
     ]
