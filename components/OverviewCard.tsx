@@ -59,6 +59,19 @@ export function OverviewCard() {
           However it does still seems early, as there are some issues with the refetches sometimes not being triggered.
         </CardDescription>
       </CardHeader>
+      <CardHeader>
+        <CardTitle>Notes</CardTitle>
+        <CardDescription>
+          I observed some intersting behavior during this project. Notably that changing the value of prefetch in the Link component also change the
+          behavior of the router cache. It seems that when prefetch is true, the router cache store s the dynamic route, but not when using prefetch
+          null or false.
+          <br />
+          Interstingly, for SWR, using prefetch false or null means that the dynamic page needs to be fully reloaded, but Tanstack Query someone
+          manages to work well without. I&apos;m thinking that the caching behavior in Tanstack query is smarter than in SWR, so the page is actually
+          always regenerated when prefetch is false or null but Tanstack Query know that the data is available in the cache, and so doesn&apos;t
+          suspend the component while SWR doesn&apos;t know that, and thinks it has to wait for the promise to resolve to actaully stop suspending.
+        </CardDescription>
+      </CardHeader>
       <CardFooter>
         <p className='text-sm text-muted-foreground'>This project is a work in progress. If you have any feedback, please let me know.</p>
       </CardFooter>
