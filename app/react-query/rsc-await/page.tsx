@@ -9,7 +9,9 @@ export default async function RSC_Await_Page() {
       <div className='space-y-6'>
         <div>
           <h1 className='text-2xl font-bold mb-2'>React Query - RSC + await Approach</h1>
-          <p className='text-muted-foreground'>Request is prefetched on the server, not on the client. Client should mount with the data.</p>
+          <p className='text-muted-foreground'>
+            Request is prefetched on the server every navigation, not on the client. Client mount with the data but server component always suspend.
+          </p>
         </div>
 
         <Card>

@@ -1,0 +1,198 @@
+{
+  "stateManagers": [
+    {
+      "name": "Vanilla React",
+      "techniques": [
+        {
+          "name": "useEffect-based data fetching",
+          "pros": ["Built into React", "Easy to understand for beginners", "No additional dependencies"],
+          "cons": [
+            "Boilerplate",
+            "Manual cache management",
+            "No built-in loading/error states",
+            "Potential for race conditions",
+            "No automatic background updates"
+          ],
+          "navigation": {
+            "firstLoad": false,
+            "subsequent": true
+          }
+        },
+        {
+          "name": "RSC await with client components",
+          "pros": ["Simplest approach"],
+          "cons": ["Data is fixed at request time", "Need to be passed through props", "It's never enough"],
+          "navigation": {
+            "firstLoad": false,
+            "subsequent": false
+          }
+        },
+        {
+          "name": "Promise props with use hook",
+          "pros": [""],
+          "cons": ["Requires using context for DI = boilerplate/provider hell", "No caching on the client side"],
+          "navigation": {
+            "firstLoad": true,
+            "subsequent": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "Jotai",
+      "techniques": [
+        {
+          "name": "useEffect-based data fetching",
+          "pros": ["Instant updates"],
+          "cons": ["Heavy boilerplate", "No synching with server", "No caching on the client side", "Manual management of loading/error states"],
+          "navigation": {
+            "firstLoad": false,
+            "subsequent": true
+          }
+        },
+        {
+          "name": "RSC await with client components",
+          "pros": [""],
+          "cons": [""],
+          "navigation": {
+            "firstLoad": false,
+            "subsequent": false
+          }
+        },
+        {
+          "name": "Promise props with use hook",
+          "pros": [""],
+          "cons": ["Hard to setup if even possible", "Weird unwrapping of promise"],
+          "navigation": {
+            "firstLoad": true,
+            "subsequent": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "Zustand",
+      "techniques": [
+        {
+          "name": "useEffect-based data fetching",
+          "pros": [""],
+          "cons": [""],
+          "navigation": {
+            "firstLoad": false,
+            "subsequent": true
+          }
+        },
+        {
+          "name": "RSC await with client components",
+          "pros": [""],
+          "cons": [""],
+          "navigation": {
+            "firstLoad": false,
+            "subsequent": false
+          }
+        },
+        {
+          "name": "Promise props with use hook",
+          "pros": [""],
+          "cons": [""],
+          "navigation": {
+            "firstLoad": true,
+            "subsequent": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "React Query",
+      "techniques": [
+        {
+          "name": "Standard useQuery approach",
+          "pros": ["Declarative Approach", "Simple mental model, all fetches happen on client", "No boilerplate", "Fetch where you need"],
+          "cons": [
+            "Data fetching starts on the client",
+            "Need to pass by the server to get the data",
+            "Risk of waterfalls with round-trips",
+            "User must be identified on each request",
+            "No SEO benefits",
+            "Requires a re-render after the mounting"
+          ],
+          "navigation": {
+            "firstLoad": false,
+            "subsequent": true
+          }
+        },
+        {
+          "name": "Dehydrating data from the server",
+          "pros": ["Fast first load", "Less Waterfalls", "SEO", "DB can be called directly? (to confirm)", "No rerender after mounting"],
+          "cons": [
+            "Less declarative approach (Suspense and Error Boundaries)",
+            "Need to use a provider & RSC wrapper for each query ideally",
+            "Server doesn't know what is cached on client",
+            "Need for serialization/deserialization of the data",
+            "Non-fetch must be explicitely specified to avoid SSG",
+            "CC must be wrapped in an RSC itself wrapped in a Suspense",
+            "Need to create a wrapper for each query + wrapper function"
+          ],
+          "navigation": {
+            "firstLoad": false,
+            "subsequent": false
+          }
+        },
+        {
+          "name": "Dehydrating queries from the server",
+          "pros": [
+            "All RSC benefits",
+            "queryCache decides what to use, only the query is passed from server",
+            "Directly suspends the client component, not the RSC",
+            "Multiple queries can be passed through a single HydrationBoundary",
+            "Perfect typescript with useSuspenseQuery hook"
+          ],
+          "cons": [
+            "Less declarative approach (Suspense and Error Boundaries)",
+            "Need for serialization/deserialization of the data",
+            "Non-fetch must be explicitely specified to avoid SSG in Next.js",
+            "Require using useSuspenseQuery hook (tbh not a con)",
+            "Probably can't fetch directly from the db (to confirm)",
+            "Need to create a wrapper for each query + wrapper function"
+          ],
+          "navigation": {
+            "firstLoad": true,
+            "subsequent": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "SWR",
+      "techniques": [
+        {
+          "name": "standard useSWR",
+          "pros": ["Same than React Query"],
+          "cons": ["Same than React Query", "It's not React Query"],
+          "navigation": {
+            "firstLoad": false,
+            "subsequent": true
+          }
+        },
+        {
+          "name": "RSC await with client components",
+          "pros": ["Same than React Query", "Much simpler approach than React Query", "No need for a special hook"],
+          "cons": ["Same than React Query", "It's not React Query"],
+          "navigation": {
+            "firstLoad": false,
+            "subsequent": false
+          }
+        },
+        {
+          "name": "Promise props with use hook",
+          "pros": ["Same than React Query", "Much simpler approach than React Query", "No need for a special hook"],
+          "cons": ["Typescript thinks data is undefined", "It's not React Query"],
+          "navigation": {
+            "firstLoad": true,
+            "subsequent": true
+          }
+        }
+      ]
+    }
+  ]
+}
