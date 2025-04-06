@@ -1,6 +1,6 @@
 'use client'
 
-import { selectedStateManagersAtom, visibleColumnsAtom } from '@/atoms/filters'
+import { selectedStateManagersAtom, visibleColumnsAtom } from '@/lib/atoms/filters'
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'

@@ -1,7 +1,7 @@
 'use client'
 
 import DataComponent from '@/components/data components/DataComponent'
-import { useSlowDataPromiseProps, useSlowerDataPromiseProps } from '@/hooks/useSlowData'
+import { useSlowDataPromiseProps, useSlowerDataPromiseProps } from '@/hooks/useSlowDataTQ'
 
 export function WrapperSlowComponent_RQ_PromiseProps_Client() {
   //Because we use useSuspenseQuery, the data will always be loaded on the client

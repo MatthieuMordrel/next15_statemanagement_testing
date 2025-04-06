@@ -1,5 +1,5 @@
 import { fetchSlowData, fetchSlowerData } from '@/lib/data'
-import { WrapperSlowComponent, WrapperSlowerComponent } from '../Wrappers'
+import { WrapperSlowComponent, WrapperSlowerComponent } from '../use-effect/WrappersChild'
 
 export async function WrapperSlowComponent_RSC() {
   // The await here allows the component to suspend

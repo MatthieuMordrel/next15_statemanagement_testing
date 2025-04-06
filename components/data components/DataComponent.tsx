@@ -19,7 +19,19 @@ type IncrementYearType = UseMutateFunction<Error, number | undefined, Data> | ((
 /**
  * This component is only used to display the data, but we should be able to retrieve the data and setter functions directly inside it if needed
  */
-function DataComponent({ data, seconds, color, incrementYear }: { data: Data; seconds: number; color: string; incrementYear?: IncrementYearType }) {
+function DataComponent({
+  data,
+  seconds,
+  color,
+  incrementYear,
+  isMutating
+}: {
+  data: Data
+  seconds: number
+  color: string
+  incrementYear?: IncrementYearType
+  isMutating?: boolean
+}) {
   const renders = useCountRenders()
 
   // Get the background color class, fallback to a default if color is not in variants
@@ -36,7 +48,7 @@ function DataComponent({ data, seconds, color, incrementYear }: { data: Data; se
       <p>This component took {seconds} seconds to load!</p>
       <p>Loaded data: {data.title}</p>
       <p>Timestamp: {data.timestamp}</p>
-      <Button onClick={handleIncrementYear} className='mt-2'>
+      <Button onClick={handleIncrementYear} className='mt-2' disabled={isMutating}>
         Increment Year
       </Button>
       <p>Renders: {renders}</p>

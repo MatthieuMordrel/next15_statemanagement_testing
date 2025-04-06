@@ -2,7 +2,7 @@
 
 import DataComponent from '@/components/data components/DataComponent'
 import { Loading } from '@/components/ui/loading'
-import { useSlowData, useSlowerData } from '@/hooks/useSlowData'
+import { useSlowData, useSlowerData } from '@/hooks/useSlowDataTQ'
 
 export function WrapperSlowComponent_RQ_Effect() {
   const { data, isLoading, isError, error, incrementYear } = useSlowData()

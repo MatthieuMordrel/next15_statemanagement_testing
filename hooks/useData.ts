@@ -13,5 +13,7 @@ export function useData({ data }: { data: Data }) {
     setState(incrementYear(state))
   }
 
+  //Mutation happen here, but you maintain two source of truth
+
   return { state, incrementYearState }
 }

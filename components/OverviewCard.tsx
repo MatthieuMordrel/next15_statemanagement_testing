@@ -10,8 +10,7 @@ export function OverviewCard() {
         </CardDescription>
         <CardTitle>What we are not testing</CardTitle>
         <CardDescription>
-          We are NOT comparing SSR vs CSR. I truly think that SSG and PPR are great technologies and have little downsides (self hosting being one of
-          them).
+          We are NOT comparing SSR vs CSR. As we are using Next.js, everything is SSR.
           <br />
           We are solely focusing on the pros and cons of the different strategies that can be adopted for data fetching and state management in an SSR
           context.
@@ -64,7 +63,9 @@ export function OverviewCard() {
         <CardDescription>
           I observed some intersting behavior during this project. Notably that changing the value of prefetch in the Link component also change the
           behavior of the router cache. It seems that when prefetch is true, the router cache store s the dynamic route, but not when using prefetch
-          null or false.
+          null or false. (confirmed that when Next.js prefetch is true, the dynamic page is cached 5 minutes) As far as I know, this is not an issue,
+          because the data is being managed from the client at this point, so you want to leverage your server state management system to prefetch the
+          data, not Next.js.
           <br />
           Interstingly, for SWR, using prefetch false or null means that the dynamic page needs to be fully reloaded, but Tanstack Query someone
           manages to work well without. I&apos;m thinking that the caching behavior in Tanstack query is smarter than in SWR, so the page is actually

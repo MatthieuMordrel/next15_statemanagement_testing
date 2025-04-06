@@ -1,7 +1,7 @@
 'use client'
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { WrapperSlowComponent_Effect, WrapperSlowerComponent_Effect } from './Wrappers'
+import { WrapperSlowComponent_Effect, WrapperSlowerComponent_Effect } from './WrappersParent'
 
 export default function VanillaUseEffectPage() {
   return (

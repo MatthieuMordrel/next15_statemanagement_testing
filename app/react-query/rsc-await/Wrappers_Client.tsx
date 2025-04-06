@@ -2,7 +2,7 @@
 
 import DataComponent from '@/components/data components/DataComponent'
 import { Loading } from '@/components/ui/loading'
-import { useSlowDataRSC, useSlowerDataRSC } from '@/hooks/useSlowData'
+import { useSlowDataRSC, useSlowerDataRSC } from '@/hooks/useSlowDataTQ'
 
 export function WrapperSlowComponent_RQ_RSC_Client() {
   const { data, isLoading, isError, error, incrementYear } = useSlowDataRSC()

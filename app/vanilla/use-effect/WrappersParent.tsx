@@ -3,7 +3,7 @@
 import { Loading } from '@/components/ui/loading'
 import { Data, fetchSlowData, fetchSlowerData } from '@/lib/data'
 import { useEffect, useState } from 'react'
-import { WrapperSlowComponent, WrapperSlowerComponent } from '../Wrappers'
+import { WrapperSlowComponent, WrapperSlowerComponent } from './WrappersChild'
 
 export function WrapperSlowComponent_Effect() {
   const [slowData, setSlowData] = useState<Data | null>(null)
@@ -26,9 +26,13 @@ export function WrapperSlowComponent_Effect() {
   }, [])
   return (
     <>
-      {slowData && <WrapperSlowComponent data={slowData} />}
-      {loadingSlowData && <Loading />}
-      {slowError && <div className='text-red-500'>Error loading slow data: {slowError.message}</div>}
+      {slowData ? (
+        <WrapperSlowComponent data={slowData} />
+      ) : loadingSlowData ? (
+        <Loading />
+      ) : slowError ? (
+        <div className='text-red-500'>Error loading slow data: {slowError.message}</div>
+      ) : null}
     </>
   )
 }
@@ -55,9 +59,13 @@ export function WrapperSlowerComponent_Effect() {
 
   return (
     <>
-      {slowerData && <WrapperSlowerComponent data={slowerData} />}
-      {loadingSlowerData && <Loading />}
-      {slowerError && <div className='text-red-500'>Error loading slower data: {slowerError.message}</div>}
+      {slowerData ? (
+        <WrapperSlowerComponent data={slowerData} />
+      ) : loadingSlowerData ? (
+        <Loading />
+      ) : slowerError ? (
+        <div className='text-red-500'>Error loading slower data: {slowerError.message}</div>
+      ) : null}
     </>
   )
 }
