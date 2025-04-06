@@ -49,7 +49,7 @@ function DataComponent({
       <p>Loaded data: {data.title}</p>
       <p>Timestamp: {data.timestamp}</p>
       <Button onClick={handleIncrementYear} className='mt-2' disabled={isMutating}>
-        Increment Year
+        {isMutating ? 'Incrementing...' : 'Increment Year'}
       </Button>
       <p>Renders: {renders}</p>
     </div>
