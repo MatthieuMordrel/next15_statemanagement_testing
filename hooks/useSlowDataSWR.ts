@@ -33,154 +33,107 @@ const createOptimisticDataFn = (currentData: Data | undefined): OptimisticDataFu
   }
 }
 
+// Regular data fetching with SWR
 export function useSlowDataSWR() {
-  // Regular data fetching with SWR
   const { data, isLoading, error } = useSWR('slowData', fetchSlowData, SWR_OPTIONS)
 
-  // Mutation capability with useSWRMutation
   const { trigger, isMutating } = useSWRMutation('slowData', fetchSlowData, {
     ...MUTATION_OPTIONS,
     optimisticData: createOptimisticDataFn(data)
   })
 
-  // Wrapper function to trigger the mutation
-  const incrementYearMutation = () => {
-    if (!data) return
-    trigger()
-  }
-
   return {
     data,
     isLoading,
     error,
-    incrementYear: incrementYearMutation,
+    incrementYear: trigger,
     isMutating
   }
 }
 
 export function useSlowerDataSWR() {
-  // Regular data fetching with SWR
   const { data, isLoading, error } = useSWR('slowerData', fetchSlowerData, SWR_OPTIONS)
 
-  // Mutation capability with useSWRMutation
   const { trigger, isMutating } = useSWRMutation('slowerData', fetchSlowerData, {
     ...MUTATION_OPTIONS,
     optimisticData: createOptimisticDataFn(data)
   })
 
-  // Wrapper function to trigger the mutation
-  const incrementYearMutation = () => {
-    if (!data) return
-    trigger()
-  }
-
   return {
     data,
     isLoading,
     error,
-    incrementYear: incrementYearMutation,
+    incrementYear: trigger,
     isMutating
   }
 }
 
 // RSC versions of the hooks that use SWRConfig's fallback data
 export function useSlowDataSWR_RSC() {
-  // Regular data fetching with SWR
   const { data, isLoading, error } = useSWR('slowDataRSC', fetchSlowData, SWR_RSC_OPTIONS)
 
-  // Mutation capability with useSWRMutation
   const { trigger, isMutating } = useSWRMutation('slowDataRSC', fetchSlowData, {
     ...MUTATION_OPTIONS,
     optimisticData: createOptimisticDataFn(data)
   })
 
-  // Wrapper function to trigger the mutation
-  const incrementYearMutation = () => {
-    if (!data) return
-    trigger()
-  }
-
   return {
     data,
     isLoading,
     error,
-    incrementYear: incrementYearMutation,
+    incrementYear: trigger,
     isMutating
   }
 }
 
 export function useSlowerDataSWR_RSC() {
-  // Regular data fetching with SWR
   const { data, isLoading, error } = useSWR('slowerDataRSC', fetchSlowerData, SWR_RSC_OPTIONS)
 
-  // Mutation capability with useSWRMutation
   const { trigger, isMutating } = useSWRMutation('slowerDataRSC', fetchSlowerData, {
     ...MUTATION_OPTIONS,
     optimisticData: createOptimisticDataFn(data)
   })
 
-  // Wrapper function to trigger the mutation
-  const incrementYearMutation = () => {
-    if (!data) return
-    trigger()
-  }
-
   return {
     data,
     isLoading,
     error,
-    incrementYear: incrementYearMutation,
+    incrementYear: trigger,
     isMutating
   }
 }
 
 // Promise props versions of the hooks
 export function useSlowDataSWR_PromiseProps() {
-  // Regular data fetching with SWR
   const { data, isLoading, error } = useSWR('slowDataPromiseProps', fetchSlowData, SWR_RSC_OPTIONS)
 
-  // Mutation capability with useSWRMutation
   const { trigger, isMutating } = useSWRMutation('slowDataPromiseProps', fetchSlowData, {
     ...MUTATION_OPTIONS,
     optimisticData: createOptimisticDataFn(data)
   })
 
-  // Wrapper function to trigger the mutation
-  const incrementYearMutation = () => {
-    if (!data) return
-    trigger()
-  }
-
   return {
     data,
     isLoading,
     error,
-    incrementYear: incrementYearMutation,
+    incrementYear: trigger,
     isMutating
   }
 }
 
 export function useSlowerDataSWR_PromiseProps() {
-  // Regular data fetching with SWR
   const { data, isLoading, error } = useSWR('slowerDataPromiseProps', fetchSlowerData, SWR_RSC_OPTIONS)
 
-  // Mutation capability with useSWRMutation
   const { trigger, isMutating } = useSWRMutation('slowerDataPromiseProps', fetchSlowerData, {
     ...MUTATION_OPTIONS,
     optimisticData: createOptimisticDataFn(data)
   })
 
-  // Wrapper function to trigger the mutation
-  const incrementYearMutation = () => {
-    if (!data) return
-    trigger()
-  }
-
   return {
     data,
     isLoading,
     error,
-    incrementYear: incrementYearMutation,
+    incrementYear: trigger,
     isMutating
   }
 }
