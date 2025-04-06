@@ -272,15 +272,15 @@
         {
           "name": "Promise props with use hook",
           "pros": ["Same than React Query", "Much simpler approach than React Query", "No need for a special hook"],
-          "cons": ["Typescript thinks data is undefined", "No smart caching on subsequent navigations", "It's not React Query"],
+          "cons": ["Typescript thinks data is undefined", "Need to be revalidated on mount to be added to the cache", "It's not React Query"],
           "navigation": {
             "firstLoad": {
               "instant": "prefetching",
               "comment": "With Next.js prefetching only"
             },
             "subsequent": {
-              "instant": "prefetching",
-              "comment": "With Next.js prefetching only"
+              "instant": "instant",
+              "comment": "Once put in the cache, it's instant"
             }
           }
         }
