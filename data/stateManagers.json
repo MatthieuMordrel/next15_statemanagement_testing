@@ -76,8 +76,8 @@
         },
         {
           "name": "Awaited in RSC",
-          "pros": [""],
-          "cons": [""],
+          "pros": ["Decent syntax"],
+          "cons": ["Need a RSC wrapper for each atom"],
           "navigation": {
             "firstLoad": {
               "instant": "prefetching",
@@ -142,7 +142,7 @@
         {
           "name": "Passed from RSC",
           "pros": [""],
-          "cons": [""],
+          "cons": ["Doesn't seem to work", "No Documentation"],
           "navigation": {
             "firstLoad": {
               "instant": "broken",
