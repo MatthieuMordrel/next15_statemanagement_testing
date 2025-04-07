@@ -2,21 +2,22 @@ import { Loading } from '@/components/ui/loading'
 import { fetchSlowData, fetchSlowerData } from '@/lib/data'
 import { getQueryClient } from '@/lib/getQueryClient'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
+import { headers } from 'next/headers'
 import { Suspense } from 'react'
 import { WrapperSlowComponent_RQ_PromiseProps_Client, WrapperSlowerComponent_RQ_PromiseProps_Client } from './Wrappers_Client'
 
 export async function WrapperSlowComponent_PromiseProps_RSC_Server() {
   // This has to be getQueryClient() and not new QueryClient() despite what the docs say
   const queryClient = getQueryClient()
-
+  
   queryClient.prefetchQuery({
     queryKey: ['slowDataPromiseProps'],
-    queryFn: fetchSlowData
+    queryFn: () => fetchSlowData()
   })
 
   queryClient.prefetchQuery({
     queryKey: ['slowerDataPromiseProps'],
-    queryFn: fetchSlowerData
+    queryFn: () => fetchSlowerData()
   })
 
   return (

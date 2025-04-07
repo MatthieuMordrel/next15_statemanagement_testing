@@ -16,7 +16,11 @@ export function fetchDataOptimistic(delay: number = 1000): Data {
 export async function fetchSlowData(): Promise<Data> {
   // Use absolute URL with the base URL
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
-  const res = await fetch(`${baseUrl}/api/dummyDataSlow`, { cache: 'no-store', method: 'GET', headers: { 'Content-Type': 'application/json' } })
+  const res = await fetch(`${baseUrl}/api/dummyDataSlow`, {
+    cache: 'no-store',
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  })
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
@@ -27,7 +31,11 @@ export async function fetchSlowData(): Promise<Data> {
 export async function fetchSlowerData(): Promise<Data> {
   // Use absolute URL with the base URL
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
-  const res = await fetch(`${baseUrl}/api/dummyDataSlower`, { cache: 'no-store', method: 'GET', headers: { 'Content-Type': 'application/json' } })
+  const res = await fetch(`${baseUrl}/api/dummyDataSlower`, {
+    cache: 'no-store',
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  })
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
