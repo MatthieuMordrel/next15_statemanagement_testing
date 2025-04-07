@@ -42,7 +42,7 @@ export const createDataStore = (initState: Partial<Omit<DataState, 'actions'>> =
           const data = await fetchSlowData()
           set({ slowData: data })
         } catch (error) {
-          set({ errorSlow: error as string })
+          set({ errorSlow: 'Failed to fetch slow data' })
         } finally {
           set({ isLoadingSlow: false })
         }
@@ -54,7 +54,7 @@ export const createDataStore = (initState: Partial<Omit<DataState, 'actions'>> =
           const data = await fetchSlowerData()
           set({ slowerData: data })
         } catch (error) {
-          set({ errorSlower: error as string })
+          set({ errorSlower: 'Failed to fetch slower data' })
         } finally {
           set({ isLoadingSlower: false })
         }
