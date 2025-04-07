@@ -10,9 +10,9 @@ export function SlowDataComponent() {
   const { incrementSlowYear } = useDataActions()
 
   // Data is already available from server
-  if (!slowData) return null
+  if (slowData) return <DataComponent data={slowData} seconds={2} color='blue' incrementYear={incrementSlowYear} />
 
-  return <DataComponent data={slowData} seconds={2} color='blue' incrementYear={incrementSlowYear} />
+  return null
 }
 
 // Client component for slower data
@@ -22,7 +22,7 @@ export function SlowerDataComponent() {
   const { incrementSlowerYear } = useDataActions()
 
   // Data is already available from server
-  if (!slowerData) return null
+  if (slowerData) return <DataComponent data={slowerData} seconds={4} color='green' incrementYear={incrementSlowerYear} />
 
-  return <DataComponent data={slowerData} seconds={4} color='green' incrementYear={incrementSlowerYear} />
+  return null
 }

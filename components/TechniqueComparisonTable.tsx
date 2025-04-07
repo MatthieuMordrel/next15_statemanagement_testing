@@ -2,7 +2,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 
 const techniques = [
   {
-    name: 'useEffect-based data fetching (no Suspense/Streaming)',
+    name: 'Client based',
     dataFetching: {
       start: 'Data fetching starts on the client side after component mount',
       details: 'Triggered by useEffect hook, runs after initial render, client calls the API, which calls the database'
@@ -19,15 +19,15 @@ const techniques = [
     ],
     cons: [
       'Data fetching starts on the client',
-      'Need to pass by the server to get the data',
+      'Need to pass by endpoints to get initial data',
       'Risk of waterfalls with round-trips',
-      'User must be identified on each request',
-      'No SEO benefits',
+      'User must be identified on each user-based request',
+      'No SEO benefits, html only has a loading shell',
       'Requires a re-render after the mounting'
     ]
   },
   {
-    name: 'RSC await with client components',
+    name: 'RSC based',
     dataFetching: {
       start: 'Data fetching is fully done in a parent wrapper RSC',
       details: 'Triggered after the http request, blocks the rendering of the RSCs until their data is fetched'
@@ -63,19 +63,19 @@ const techniques = [
     ]
   },
   {
-    name: 'Promise props with use hook',
+    name: 'use hook based',
     dataFetching: {
-      start: 'Data fetching starts in any parent RSC',
-      details: 'Triggered after the http request, blocks the rendering of the client components receiving the data'
+      start: 'Data fetching starts in any parent RSC and is passed to the client',
+      details: 'Triggered after the http request, blocks the rendering of the client components consuming the promise'
     },
 
     pros: [
       'Same benefits as with RSC',
       'No need to wrap client components in RSC, use() can be used on client',
       'Directly suspend the client component, not the RSC',
-      'Turns from dynamic to static (integrate with router cache)'
+      'Client decides to consume the promise or not'
     ],
-    cons: ['Promise has to be passed as prop or hoisted', 'Hydration always has to be considered', 'Poor documentation']
+    cons: ['Promise has to be passed as prop or hoisted', 'Weird behavior from dynamic to static', 'Harder to implement', 'Poor documentation']
   }
 ]
 

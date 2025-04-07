@@ -1,16 +1,16 @@
 'use client'
 
-import { selectedStateManagersAtom, visibleColumnsAtom } from '@/lib/atoms/filters'
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import stateManagersData from '@/data/stateManagers.json'
+import { selectedStateManagersAtom, visibleColumnsAtom } from '@/lib/atoms/filters'
 import { useAtom } from 'jotai'
 import { PlugZap, Zap, ZapOff } from 'lucide-react'
 import React from 'react'
 
 const stateManagers = stateManagersData.stateManagers
-const columns = ['Technique', 'Pros', 'Cons', 'Data Availability'] as const
+const columns = ['Data Fetching', 'Pros', 'Cons', 'Data Availability'] as const
 
 export function ComparisonTable() {
   const [selectedStateManagers, setSelectedStateManagers] = useAtom(selectedStateManagersAtom)
@@ -77,7 +77,7 @@ export function ComparisonTable() {
           <TableHeader>
             <TableRow>
               <TableHead>State Manager</TableHead>
-              {visibleColumns['Technique'] && <TableHead>Technique</TableHead>}
+              {visibleColumns['Data Fetching'] && <TableHead>Data Fetching</TableHead>}
               {visibleColumns['Pros'] && <TableHead>Pros</TableHead>}
               {visibleColumns['Cons'] && <TableHead>Cons</TableHead>}
               {visibleColumns['Data Availability'] && <TableHead>Data Availability</TableHead>}
@@ -91,7 +91,7 @@ export function ComparisonTable() {
                     <TableCell className='font-medium' rowSpan={2}>
                       {manager.name}
                     </TableCell>
-                    {visibleColumns['Technique'] && <TableCell rowSpan={2}>{technique.name}</TableCell>}
+                    {visibleColumns['Data Fetching'] && <TableCell rowSpan={2}>{technique.name}</TableCell>}
                     {visibleColumns['Pros'] && (
                       <TableCell rowSpan={2}>
                         <ul className='list-disc list-inside space-y-1'>

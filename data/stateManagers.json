@@ -4,8 +4,8 @@
       "name": "Vanilla React",
       "techniques": [
         {
-          "name": "useEffect-based data fetching",
-          "pros": ["Built into React", "Easy to understand for beginners", "No additional dependencies"],
+          "name": "Client",
+          "pros": ["Built into React", "Easy to understand", "No additional dependencies"],
           "cons": [
             "Boilerplate",
             "Manual cache management",
@@ -25,7 +25,7 @@
           }
         },
         {
-          "name": "RSC await with client components",
+          "name": "Awaited in RSC",
           "pros": ["Simplest approach"],
           "cons": ["Data is fixed at request time", "Need to be passed through props", "It's never enough"],
           "navigation": {
@@ -40,7 +40,7 @@
           }
         },
         {
-          "name": "Promise props with use hook",
+          "name": "Passed from RSC",
           "pros": [""],
           "cons": ["Requires using context for DI = boilerplate/provider hell", "No caching on the client side"],
           "navigation": {
@@ -60,7 +60,7 @@
       "name": "Jotai",
       "techniques": [
         {
-          "name": "useEffect-based data fetching",
+          "name": "Client",
           "pros": ["Instant updates"],
           "cons": ["Heavy boilerplate", "No synching with server", "No caching on the client side", "Manual management of loading/error states"],
           "navigation": {
@@ -75,7 +75,7 @@
           }
         },
         {
-          "name": "RSC await with client components",
+          "name": "Awaited in RSC",
           "pros": [""],
           "cons": [""],
           "navigation": {
@@ -90,17 +90,17 @@
           }
         },
         {
-          "name": "Promise props with use hook",
-          "pros": [""],
+          "name": "Passed from RSC",
+          "pros": ["Easy syntax"],
           "cons": ["Hard to setup if even possible", "Weird unwrapping of promise"],
           "navigation": {
             "firstLoad": {
-              "instant": "prefetching",
-              "comment": "With Next.js prefetching only"
+              "instant": "broken",
+              "comment": "Actions don't work"
             },
             "subsequent": {
-              "instant": false,
-              "comment": "Doesn't seem to work"
+              "instant": "broken",
+              "comment": "Actions don't work"
             }
           }
         }
@@ -110,9 +110,9 @@
       "name": "Zustand",
       "techniques": [
         {
-          "name": "useEffect-based data fetching",
-          "pros": [""],
-          "cons": [""],
+          "name": "Client",
+          "pros": ["Declarative", "I love zustand syntax"],
+          "cons": ["Boilerplate (Provider via context)", "No Prefetching"],
           "navigation": {
             "firstLoad": {
               "instant": false,
@@ -125,9 +125,9 @@
           }
         },
         {
-          "name": "RSC await with client components",
+          "name": "Awaited in RSC",
           "pros": [""],
-          "cons": [""],
+          "cons": ["Server Data has to be provided at once", "No Granular Suspense"],
           "navigation": {
             "firstLoad": {
               "instant": "prefetching",
@@ -140,17 +140,17 @@
           }
         },
         {
-          "name": "Promise props with use hook",
+          "name": "Passed from RSC",
           "pros": [""],
           "cons": [""],
           "navigation": {
             "firstLoad": {
-              "instant": "prefetching",
-              "comment": "With Next.js prefetching"
+              "instant": "broken",
+              "comment": "Doesn't seem to work"
             },
             "subsequent": {
-              "instant": "instant",
-              "comment": "Through router cache"
+              "instant": "broken",
+              "comment": "Doesn't seem to work"
             }
           }
         }
@@ -160,7 +160,7 @@
       "name": "React Query",
       "techniques": [
         {
-          "name": "Standard useQuery approach",
+          "name": "Client",
           "pros": ["Declarative Approach", "Simple mental model, all fetches happen on client", "No boilerplate", "Fetch where you need"],
           "cons": [
             "Data fetching starts on the client",
@@ -183,7 +183,7 @@
           }
         },
         {
-          "name": "Dehydrating data from the server",
+          "name": "Awaited in RSC",
           "pros": ["Fast first load", "Less Waterfalls", "SEO", "DB can be called directly? (to confirm)", "No rerender after mounting"],
           "cons": [
             "Less declarative approach (Suspense and Error Boundaries)",
@@ -206,7 +206,7 @@
           }
         },
         {
-          "name": "Dehydrating queries from the server",
+          "name": "Passed from RSC",
           "pros": [
             "All RSC benefits",
             "queryCache decides what to use, only the query is passed from server",
@@ -230,7 +230,7 @@
             },
             "subsequent": {
               "instant": "instant",
-              "comment": "via queryCache + router cache (bonus point for prefetching with Tanstack Query)"
+              "comment": "via queryCache + router cache (+data can be prefetched via TQ)"
             }
           }
         }
@@ -240,7 +240,7 @@
       "name": "SWR",
       "techniques": [
         {
-          "name": "standard useSWR",
+          "name": "Client",
           "pros": ["Same than React Query"],
           "cons": ["Same than React Query", "It's not React Query"],
           "navigation": {
@@ -255,7 +255,7 @@
           }
         },
         {
-          "name": "RSC await with client components",
+          "name": "Awaited in RSC",
           "pros": ["Same than React Query", "Much simpler approach than React Query", "No need for a special hook"],
           "cons": ["Same than React Query", "It's not React Query"],
           "navigation": {
@@ -270,7 +270,7 @@
           }
         },
         {
-          "name": "Promise props with use hook",
+          "name": "Passed from RSC",
           "pros": ["Same than React Query", "Much simpler approach than React Query", "No need for a special hook"],
           "cons": ["Typescript thinks data is undefined", "Need to be revalidated on mount to be added to the cache", "It's not React Query"],
           "navigation": {

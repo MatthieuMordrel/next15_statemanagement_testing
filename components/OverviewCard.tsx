@@ -21,7 +21,7 @@ export function OverviewCard() {
       </CardHeader>
       <CardContent className='space-y-6'>
         <div className='space-y-2'>
-          <h3 className='text-lg font-medium'>State Managers</h3>
+          <CardTitle>State Managers</CardTitle>
           <ul className='list-disc list-inside text-muted-foreground space-y-1'>
             <li>Vanilla React</li>
             <li>Jotai</li>
@@ -32,23 +32,23 @@ export function OverviewCard() {
         </div>
 
         <div className='space-y-2'>
-          <h3 className='text-lg font-medium'>Testing Approaches</h3>
+          <CardTitle>Testing Approaches</CardTitle>
           <ul className='list-disc list-inside text-muted-foreground space-y-1'>
-            <li>useEffect-based data fetching</li>
-            <li>RSC await with client components</li>
-            <li>Promise props with use hook</li>
+            <li>Client based data fetching</li>
+            <li>RSC based data fetching</li>
+            <li>use hook based data fetching</li>
           </ul>
         </div>
       </CardContent>
       <CardHeader>
         <CardTitle>Conclusion</CardTitle>
         <CardDescription>
-          Without surprise Tanstack React Query is the best solution.
+          Tanstack React Query seems to be the best solution.
           <br />
-          By dehydrating queries, you can benefit from fast first load, even instant with prefetching.
+          By dehydrating queries, you can benefit from fast first load, even instant with Next.js prefetching.
           <br />
           On subsequent navigation, stale data is shown and refetch on mount without triggering suspense. You can probably show fresh data by
-          implementing Tanstack Query prefetching on link mouse over/entering the viewport.
+          implementing Tanstack Query prefetching.
           <br />
           Suspense boundaries can be placed around the client component, and you can generally limit the number of Hydration Boundaries needed because
           only queries are passed to the client.
@@ -61,7 +61,7 @@ export function OverviewCard() {
       <CardHeader>
         <CardTitle>Notes</CardTitle>
         <CardDescription>
-          I observed some intersting behavior during this project. Notably that changing the value of prefetch in the Link component also change the
+          I observed some interesting behavior during this project. Notably that changing the value of prefetch in the Link component also change the
           behavior of the router cache. It seems that when prefetch is true, the router cache store s the dynamic route, but not when using prefetch
           null or false. (confirmed that when Next.js prefetch is true, the dynamic page is cached 5 minutes) As far as I know, this is not an issue,
           because the data is being managed from the client at this point, so you want to leverage your server state management system to prefetch the
