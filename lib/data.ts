@@ -20,7 +20,7 @@ export async function fetchSlowData(): Promise<Data> {
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
-  const data = (await res.json()) as Data
+  const data: Data = await res.json()
   return data
 }
 
@@ -31,7 +31,7 @@ export async function fetchSlowerData(): Promise<Data> {
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
-  const data = (await res.json()) as Data
+  const data: Data = await res.json()
   return data
 }
 
