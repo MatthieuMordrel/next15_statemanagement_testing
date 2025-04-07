@@ -51,9 +51,13 @@ export function WrapperSlowComponent_Jotai_Effect() {
 
   return (
     <>
-      {slowData && <DataComponent data={slowData} seconds={2} color='blue' incrementYear={incrementYear} />}
-      {loadingSlowData && <Loading />}
-      {slowError && <div className='text-red-500'>Error loading slow data: {slowError.message}</div>}
+      {slowData ? (
+        <DataComponent data={slowData} seconds={2} color='blue' incrementYear={incrementYear} />
+      ) : loadingSlowData ? (
+        <Loading />
+      ) : slowError ? (
+        <div className='text-red-500'>Error loading slow data: {slowError.message}</div>
+      ) : null}
     </>
   )
 }
@@ -81,9 +85,13 @@ export function WrapperSlowerComponent_Jotai_Effect() {
 
   return (
     <>
-      {slowerData && <DataComponent data={slowerData} seconds={4} color='green' incrementYear={incrementYear} />}
-      {loadingSlowerData && <Loading />}
-      {slowerError && <div className='text-red-500'>Error loading slower data: {slowerError.message}</div>}
+      {slowerData ? (
+        <DataComponent data={slowerData} seconds={4} color='green' incrementYear={incrementYear} />
+      ) : loadingSlowerData ? (
+        <Loading />
+      ) : slowerError ? (
+        <div className='text-red-500'>Error loading slower data: {slowerError.message}</div>
+      ) : null}
     </>
   )
 }
