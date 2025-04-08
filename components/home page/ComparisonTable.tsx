@@ -32,14 +32,14 @@ const statusIndicators = [
   },
   {
     icon: <Zap className='size-4' />,
-    label: 'Fresh Data',
+    label: 'Prefetching',
     description: 'Fresh Data is available using Next.js prefetching',
     color: 'text-yellow-500'
   },
   {
     icon: <Zap className='size-4' />,
-    label: 'Stale Data',
-    description: 'Stale Data is available without needing Next.js prefetching',
+    label: 'Router Cache',
+    description: 'Stale Data is available without Next.js prefetching as long as route is cached',
     color: 'text-green-500'
   }
 ]
@@ -151,9 +151,9 @@ export function ComparisonTable() {
         {/* Description and legend */}
         <div className='space-y-4'>
           <p className='text-muted-foreground'>
-            In Next.js, navigation can always be instant using prefetching, and is never instant without it. However, this navigation might show a
-            loading.js, which is much less exciting than having the actual page with fresh data available. Below we explore how to instantly get the
-            page we want, with stale or fresh data.
+            In Next.js, navigation can always be instant using prefetching. However, we might not always want to prefetch and this navigation might
+            show a loading.js, which is much less exciting than having the actual page with fresh data available. Below we explore how to instantly
+            get the page we want, with stale or fresh data.
           </p>
 
           <div className={`overflow-hidden transition-all duration-300 ease-in-out ${showLegend ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>

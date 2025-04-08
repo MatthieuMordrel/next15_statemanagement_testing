@@ -73,9 +73,10 @@ const techniques = [
       'Same benefits as with RSC',
       'No need to wrap client components in RSC, use() can be used on client',
       'Directly suspend the client component, not the RSC',
-      'Client decides to consume the promise or not'
+      'Client decides to consume the promise or not',
+      'Route stays in router cache once promise is resolved'
     ],
-    cons: ['Promise has to be passed as prop or hoisted', 'Weird behavior from dynamic to static', 'Harder to implement', 'Poor documentation']
+    cons: ['Harder to implement', 'Poor documentation']
   }
 ]
 
