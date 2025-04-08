@@ -18,7 +18,6 @@ export default function Home() {
         </div>
 
         <div className='space-y-4'>
-          <h2 className='text-2xl font-semibold tracking-tight'>State Manager Comparison</h2>
           <ComparisonTable />
         </div>
       </div>
