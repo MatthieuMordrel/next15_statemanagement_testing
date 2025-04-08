@@ -72,6 +72,20 @@ export function ComparisonTable() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+      <div className='flex flex-col gap-2'>
+        In Next.js, navigation can always be instant using prefetching, and is never instant without it. However this navigation might show a
+        loading.js, which is much less exciting than having the actual page with fresh data available. Below we explore how to instantly get the page
+        we want, with stale or fresh data.
+        <div className='flex gap-2'>
+          <PlugZap className='size-4 text-red-500' />: Doesn&apos;t seem to work/I don&apos;t know how to make it work
+          <ZapOff className='size-4 text-red-500' />: Fresh or Stale Data is never available
+        </div>
+        <div className='flex gap-2'>
+          <Zap className='size-4 text-yellow-500' />: Fresh Data is available using Next.js prefetching
+          <Zap className='size-4 text-green-500' />: Stale Data is available without needing Next.js prefetching (Fresh data could be shown using your
+          state management prefetching mecanisms)
+        </div>
+      </div>
       <div className='rounded-md border'>
         <Table>
           <TableHeader>

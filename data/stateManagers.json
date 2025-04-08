@@ -178,7 +178,7 @@
             },
             "subsequent": {
               "instant": "instant",
-              "comment": "via queryCache + router cache (bonus point for prefetching with Tanstack Query)"
+              "comment": "via queryCache + router cache"
             }
           }
         },
@@ -230,7 +230,7 @@
             },
             "subsequent": {
               "instant": "instant",
-              "comment": "via queryCache + router cache (+data can be prefetched via TQ)"
+              "comment": "via queryCache + router cache"
             }
           }
         }

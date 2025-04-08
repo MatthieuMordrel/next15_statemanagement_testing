@@ -1,6 +1,6 @@
-import { ComparisonTable } from '@/components/ComparisonTable'
-import { OverviewCard } from '@/components/OverviewCard'
-import { TechniqueComparisonTable } from '@/components/TechniqueComparisonTable'
+import { ComparisonTable } from '@/components/home page/ComparisonTable'
+import { OverviewCard } from '@/components/home page/OverviewCard'
+import { TechniqueComparisonTable } from '@/components/home page/TechniqueComparisonTable'
 
 export default function Home() {
   return (

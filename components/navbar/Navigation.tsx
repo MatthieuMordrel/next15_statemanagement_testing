@@ -4,7 +4,7 @@ import { useAtom } from 'jotai'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { PrefetchToggle } from '@/components/prefetch-toggle'
+import { PrefetchToggle } from '@/components/navbar/prefetch-toggle'
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu'
 import { prefetchAtom } from '@/lib/atoms/prefetch'
 import { cn } from '@/lib/utils'
