@@ -78,7 +78,8 @@ export function useSlowerData() {
 export function useSlowDataSuspense() {
   const query = useSuspenseQuery({
     queryKey: ['slowDataSuspense'],
-    queryFn: fetchSlowData
+    queryFn: fetchSlowData,
+    refetchOnMount: false
   })
   const incrementYear = createIncrementYearMutation('slowDataSuspense', fetchSlowData)
 
@@ -91,7 +92,8 @@ export function useSlowDataSuspense() {
 export function useSlowerDataSuspense() {
   const query = useSuspenseQuery({
     queryKey: ['slowerDataSuspense'],
-    queryFn: fetchSlowerData
+    queryFn: fetchSlowerData,
+    refetchOnMount: false
   })
   const incrementYear = createIncrementYearMutation('slowerDataSuspense', fetchSlowerData)
 

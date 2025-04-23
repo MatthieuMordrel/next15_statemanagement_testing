@@ -11,7 +11,8 @@ export default function VanillaUseEffectPage() {
           <h1 className='text-2xl font-bold mb-2'>React Query - useSuspense Approach</h1>
         </div>
         <p className='text-muted-foreground'>
-          Request starts on the server, and is rerun on the client. This leads to hydration mismatches and need to be fixed using prefetching.
+          Request starts on the server, and is rerun on the client. Even with refetchOnMount: false, it leads to hydration mismatches and need to be
+          fixed using prefetching.
         </p>
 
         <Card>
