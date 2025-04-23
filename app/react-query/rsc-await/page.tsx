@@ -17,7 +17,7 @@ export default async function RSC_Await_Page() {
         <Card>
           <CardHeader>
             <CardTitle>Data Fetching Example</CardTitle>
-            <CardDescription>Using useEffect with independent loading states for each data fetch</CardDescription>
+            <CardDescription>RSC + await with independent loading states for each data fetch</CardDescription>
           </CardHeader>
           <CardContent className='space-y-4'>
             {/* First component with its own loading and error states */}

@@ -75,6 +75,32 @@ export function useSlowerData() {
   }
 }
 
+export function useSlowDataSuspense() {
+  const query = useSuspenseQuery({
+    queryKey: ['slowDataSuspense'],
+    queryFn: fetchSlowData
+  })
+  const incrementYear = createIncrementYearMutation('slowDataSuspense', fetchSlowData)
+
+  return {
+    data: query.data,
+    incrementYear: incrementYear.mutate
+  }
+}
+
+export function useSlowerDataSuspense() {
+  const query = useSuspenseQuery({
+    queryKey: ['slowerDataSuspense'],
+    queryFn: fetchSlowerData
+  })
+  const incrementYear = createIncrementYearMutation('slowerDataSuspense', fetchSlowerData)
+
+  return {
+    data: query.data,
+    incrementYear: incrementYear.mutate
+  }
+}
+
 export function useSlowDataRSC() {
   const query = useSuspenseQuery({
     queryKey: ['slowDataRSC'],

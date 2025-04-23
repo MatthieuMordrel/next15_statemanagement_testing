@@ -64,6 +64,22 @@ export default function Navigation() {
                             </div>
                           </Link>
                         ))}
+                        {manager.slug === 'react-query' && (
+                          <Link
+                            key='usesuspense'
+                            href='/react-query/useSuspense'
+                            prefetch={prefetchEnabled}
+                            className={cn(
+                              'flex flex-col items-start justify-between rounded-md p-3 hover:bg-red-500/90 focus:bg-red-500/90 border transition-colors duration-200',
+                              pathname === '/react-query/useSuspense'
+                                ? 'bg-red-500 text-white border-red-700'
+                                : 'bg-red-400 text-white border-red-600'
+                            )}>
+                            <div className='w-full flex justify-center items-center'>
+                              <div className='text-sm font-medium leading-none'>useSuspense</div>
+                            </div>
+                          </Link>
+                        )}
                       </div>
                     </div>
                   </NavigationMenuContent>

@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { WrapperSlowComponent_RQ_Effect, WrapperSlowerComponent_RQ_Effect } from './Wrappers'
+
 export default function VanillaUseEffectPage() {
   return (
     <div className='container py-8'>
